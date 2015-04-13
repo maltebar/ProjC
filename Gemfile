@@ -10,7 +10,6 @@ gem 'ahoy', '~> 0.1.4'
 gem 'puma'
 
 gem 'pg'
-gem 'dnssd', '~> 2.0.1'
 
 # gem 'countdown'
 

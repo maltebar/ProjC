@@ -1,0 +1,35 @@
+<table class="table table-bordered"> 
+  
+  <thead> <%#table header%>
+    <tr>
+      <th style="width: 30%">Title</th>
+      <th style="width: 38%">Description</th> 
+      <th style="width: 14%">Link</th>
+      <th style="width: 14%">Editing Buttons</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %> <%#table content: each row contains...%>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= assignment.title %></td>
+        <td><%= assignment.description%></td>
+        <%if assignment.complete?%>
+          <td><%= link_to 'Review', {:controller => "assignments", :action => "review", :assignment => assignment.id} %></td>
+        <%else%>
+          <td><%=link_to 'Open', assignment_path(assignment)%></td>
+        <%end%>
+          <td><%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
+          <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>       
+      </tr>
+
+    <% end %>
+  </tbody>
+
+</table>
+
+
+<br><br>
+
+<%= link_to 'New Assignment', new_assignment_path %>
+

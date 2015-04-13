@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*=require bootstrap*/
+
+html {
+  overflow-y: scroll;
+  font-family: Sans-Serif;
+}
+
+body {
+	padding: 90px;
+	background: #ffffff !important;
+}
+
+a.navbar-nickname {
+	color: #9d9d9d !important; //changes colour of "logged in as: " without messing up hover-white! CAPS NECESSARY 4 THIS?
+	&:hover {
+    color: #ffffff !important;
+    background-color: transparent !important;
+    text-decoration: none;
+  } 
+}
+
+a{
+  &:hover {
+    text-decoration: none;
+  } 
+}

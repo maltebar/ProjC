@@ -1,0 +1,21 @@
+<%= if current_user.admin?
+		render 'adminshow'
+	else
+		if @assignment.phase == 0
+			render 'pretest'
+		elsif @assignment.phase == 1
+			render 'think'
+		elsif @assignment.phase == 2
+			render 'pair1'
+		elsif @assignment.phase == 3
+			render 'pair2'
+		elsif @assignment.phase == 4
+			render 'pair3'
+		elsif @assignment.phase == 5
+			render 'share'
+		else
+			render 'posttest'
+		end
+	end%>
+
+

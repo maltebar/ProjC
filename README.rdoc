@@ -1,0 +1,8 @@
+To start the server:
+	bundle exec puma -t 3:130
+
+	(multithreading with Puma web server - up to 130 threads)
+
+
+To start the PostgresSQL server (to get its command line):
+	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start

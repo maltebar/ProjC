@@ -1,0 +1,65 @@
+<%= form_for(@assignment, html: { id: "assignment_update" }) do |f| %>
+  <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br> <%#automatically capitalizes labels%>
+    <%= f.text_field :title, size: "51x1"%>
+  </div>
+  <%= f.hidden_field :solution %>
+  <%= f.hidden_field :description %>
+
+  <br><br>
+
+  <div class="field">
+    <%= f.label :description, "Description" %><br>
+    <div id="editor1" style="height: 500px; width: 622px"><%= @assignment.description%></div>
+    <br><br>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :solution, "Solution" %><br>
+      <div id="editor2" style="height: 500px; width: 622px"><%=@assignment.solution%></div>
+    <br><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+    <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+
+<br><br><br>
+
+
+    <script>
+      var editor1 = ace.edit("editor1");
+      editor1.setTheme("ace/theme/chrome");
+      editor1.getSession().setMode("ace/mode/text");
+
+      var editor2 = ace.edit("editor2");
+      editor2.setTheme("ace/theme/chrome");
+      editor2.getSession().setMode("ace/mode/text");
+
+
+      $("[name='commit']").on("click",function(e){
+        e.preventDefault();
+        var desc = editor1.getSession().getValue();
+        var sol = editor2.getSession().getValue();
+        $("#assignment_solution").val(sol);
+        $("#assignment_description").val(desc);
+        $("#assignment_update").submit();
+      });
+        
+    </script>

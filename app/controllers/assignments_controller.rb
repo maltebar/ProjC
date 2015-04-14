@@ -34,7 +34,7 @@ class AssignmentsController < ApplicationController
   def forward_phase
     @assignment = Assignment.find(params[:id])
     current_phase = @assignment.phase
-    if current_phase + 1 < 8
+    if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
     else
       @assignment.phase = 0

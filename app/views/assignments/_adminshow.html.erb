@@ -3,4 +3,4 @@
 <h3><%=@assignment.title%></h3>
 <h5><%=@assignment.description%></h5>
 
-<%= button_to 'Change Phase', :action => "change_phase" %>
+<%= button_to 'Change Phase', :action => "forward_phase", :id => @assignment.id %>

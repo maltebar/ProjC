@@ -1,19 +1,8 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
-  #before_action :set_complete
 
   respond_to :html
 
-  def set_complete
-    @assignments = Assignment.all
-    @assignments.each do |assignment|
-      if assignment.display_date < Date.today
-        assignment.update(complete: true)
-      else
-        assignment.update(complete: false)
-      end
-    end
-  end
 
   def review
     @assignment = Assignment.find(params[:assignment])
@@ -42,10 +31,14 @@ class AssignmentsController < ApplicationController
   def edit
   end
 
-  def change_phase
-    @assignment = Assignment.find(2)
+  def forward_phase
+    @assignment = Assignment.find(params[:id])
     current_phase = @assignment.phase
-    @assignment.phase = current_phase + 1
+    if current_phase + 1 < 8
+      @assignment.phase = current_phase + 1
+    else
+      @assignment.phase = 0
+    end
     @assignment.save
     respond_with(@assignment)
   end

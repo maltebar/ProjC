@@ -1,0 +1,14 @@
+<div id="editor" style="height: 500px; width: 622px"><%=@assignment.solution%></div>    
+
+<script src="ace.js" type="text/javascript" charset="utf-8"></script>
+
+<br><br><br>
+
+
+<script>
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/chrome");
+  editor.getSession().setMode("ace/mode/java");
+  editor.setReadOnly(true);
+    
+</script>

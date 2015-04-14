@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'browser' => 'browser#index'
 
   post 'assignments/forward_phase'
+  post 'assignments/backward_phase'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

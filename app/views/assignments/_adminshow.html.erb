@@ -1,6 +1,87 @@
 
-<h1>AdminShow</h1>
-<h3><%=@assignment.title%></h3>
-<h5><%=@assignment.description%></h5>
+<h1><%=@assignment.title%></h1>
+<h3><%=@assignment.description%></h3>
 
-<%= button_to 'Change Phase', :action => "forward_phase", :id => @assignment.id %>
+<br>
+
+<table border="0" width="100%">
+	<tr>
+		<td align="center">Pre-test</td>
+		<td align="center">Think</td>
+		<td align="center">Pair I</td>
+		<td align="center">Pair II</td>
+		<td align="center">Pair III</td>
+		<td align="center">Share</td>
+		<td align="center">Post-test</td>
+	</tr>
+	<tr>
+		<%=form_for(@assignment) do |f|%>
+			<%if @assignment.phase == 0%>
+				<td align="center"><%=f.radio_button :phase, 0, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 0, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 1%>
+				<td align="center"><%=f.radio_button :phase, 1, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 1, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 2%>
+				<td align="center"><%=f.radio_button :phase, 2, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 2, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 3%>
+				<td align="center"><%=f.radio_button :phase, 3, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 3, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 4%>
+				<td align="center"><%=f.radio_button :phase, 4, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 4, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 5%>
+				<td align="center"><%=f.radio_button :phase, 5, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 5, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+
+			<%if @assignment.phase == 6%>
+				<td align="center"><%=f.radio_button :phase, 6, :item_wrapper_class => 'inline'%></td>
+			<%else%>
+				<td align="center"><%=f.radio_button :phase, 6, :item_wrapper_class => 'inline', :disabled => true%></td>
+			<%end%>
+			
+		<%end%>
+	</tr>
+</table>
+
+<br><br>
+<%# previous phase button unclickable in pretest phase and next phase changes to "complete assignment" in postest phase%>
+<%if @assignment.phase != 0%>
+	<%= button_to 'Previous Phase', :action => "backward_phase", :id => @assignment.id %>
+<%end%>
+
+<%if @assignment.phase != 6%>
+	<%= button_to 'Next Phase', :action => "forward_phase", :id => @assignment.id %>
+<%else%>
+	<%=form_for(@assignment) do |g|%>
+		<%= g.hidden_field :active, value: false %>
+		<%= g.hidden_field :complete, value: true %>
+		<%= g.submit "Complete Assignment"%>
+	<%end%>
+<%end%>
+
+<br><br><br>
+
+TIMER or render solution
+
+<%if @assignment.phase == 5%>
+	<%= render 'solution'%>
+<%end%>

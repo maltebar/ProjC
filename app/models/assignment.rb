@@ -13,10 +13,12 @@ class Assignment < ActiveRecord::Base
 	  loop do
 	    self.class.connection.raw_connection.wait_for_notify do |event, pid, assignment|
 	      yield assignment
+	      self.class.connection.execute "UNLISTEN #{channel}"
+	      self.class.connection.close_connection
 	    end
 	  end
 	ensure
-	  self.class.connection.execute "UNLISTEN #{channel}"
+		self.class.connection.execute "UNLISTEN #{channel}"
 	end
 
 	private

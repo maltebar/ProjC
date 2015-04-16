@@ -14,7 +14,7 @@
         <td><%= assignment.title %></td>
         <td><%= assignment.description%></td>
         <%if assignment.complete?%>
-          <td><%= link_to 'Review', {:controller => "assignments", :action => "studentreview", :assignment => assignment.id} %></td>
+          <td><%= link_to 'Review', {:controller => "assignments", :action => "studentreview", :assignment => assignment.id, :user => current_user.id} %></td>
         <%else%>
           <td><%=link_to 'Open', assignment_path(assignment)%></td>
         <%end%>   

@@ -19,10 +19,12 @@
         <td><%#= partner name  %></td>
         <td><%#= pretest answer%> </td> 
         <td><%#= posttest answer  %></td>
-        <td><%#= link to studentreview page%> </td>       
+        <td><%= link_to 'Review', {:controller => "assignments", :action => "studentreview", :assignment => @assignment.id, :user => user.id}%> </td>       
       </tr>
 
     <% end %>
   </tbody>
 
 </table>
+
+<%= link_to "Back", :back %>

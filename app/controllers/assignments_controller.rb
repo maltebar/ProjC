@@ -6,6 +6,7 @@ class AssignmentsController < ApplicationController
 
   def studentreview
     @assignment = Assignment.find(params[:assignment])
+    @user = User.find(params[:user])
   end
 
   def adminreview

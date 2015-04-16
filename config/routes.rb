@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     root 'assignments#index'
   end
 
-  get 'assignments/studentreview/:assignment' => 'assignments#studentreview'
+  get 'assignments/studentreview/:assignment/:user' => 'assignments#studentreview'
   get 'assignments/adminreview/:assignment' => 'assignments#adminreview'
 
   get 'browser' => 'browser#index'

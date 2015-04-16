@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pairs
+
   devise_for :users
 
   resources :notes
@@ -17,7 +19,8 @@ Rails.application.routes.draw do
     root 'assignments#index'
   end
 
-  get 'assignments/review/:assignment' => 'assignments#review'
+  get 'assignments/studentreview/:assignment' => 'assignments#studentreview'
+  get 'assignments/adminreview/:assignment' => 'assignments#adminreview'
 
   get 'browser' => 'browser#index'
 

@@ -4,8 +4,13 @@ class AssignmentsController < ApplicationController
   respond_to :html
 
 
-  def review
+  def studentreview
     @assignment = Assignment.find(params[:assignment])
+  end
+
+  def adminreview
+    @assignment = Assignment.find(params[:assignment])
+    @users = User.where.not(admin: true)
   end
 
 
@@ -97,6 +102,6 @@ class AssignmentsController < ApplicationController
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :complete, :active, :solution, :phase) 
+      params.require(:assignment).permit(:title, :description, :complete, :active, :solution, :phase, :pretest, :posttest) 
     end
 end

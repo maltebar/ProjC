@@ -22,14 +22,24 @@
 
   <div class="field">
     <%= f.label :description, "Description" %><br>
-    <div id="editor1" style="height: 500px; width: 622px"><%= @assignment.description%></div>
+    <div id="editor1" style="height: 200px; width: 622px"><%= @assignment.description%></div>
     <br><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :pretest, "Pre-test Question" %><br> <%#automatically capitalizes labels%>
+    <%= f.text_area :pretest, size: "75x10"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :posttest, "Post-test Question" %><br> <%#automatically capitalizes labels%>
+    <%= f.text_area :posttest, size: "75x10"%>
   </div>
 
 
   <div class="field">
     <%= f.label :solution, "Solution" %><br>
-      <div id="editor2" style="height: 500px; width: 622px"><%=@assignment.solution%></div>
+      <div id="editor2" style="height: 300px; width: 622px"><%=@assignment.solution%></div>
     <br><br>
   </div>
 

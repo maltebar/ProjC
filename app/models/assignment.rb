@@ -1,5 +1,6 @@
 class Assignment < ActiveRecord::Base
 	has_many :submissions
+	has_many :pairs
 
 	after_save :notify_phase_update
 	def notify_phase_update

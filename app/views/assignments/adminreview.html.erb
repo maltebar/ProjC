@@ -1,0 +1,30 @@
+<table class="table table-bordered"> 
+  
+  <thead> <%#table header%>
+    <tr>
+      <th style="width: 30%">Student Name</th>
+      <th style="width: 38%">Student Email</th> 
+      <th style="width: 14%">Partner Name</th>
+      <th style="width: 14%">Pre-test Answer</th>
+      <th style="width: 14%">Post-test Answer</th>
+      <th style="width: 14%">Classwork</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %> <%#table content: each row contains...%>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%#= partner name  %></td>
+        <td><%#= pretest answer%> </td> 
+        <td><%#= posttest answer  %></td>
+        <td><%= link_to 'Review', {:controller => "assignments", :action => "studentreview", :assignment => @assignment.id, :user => user.id}%> </td>       
+      </tr>
+
+    <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to "Back", :back %>

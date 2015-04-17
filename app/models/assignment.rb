@@ -1,5 +1,6 @@
 class Assignment < ActiveRecord::Base
 	has_many :submissions
+	has_many :pairs
 
 	after_save :notify_phase_update
 	def notify_phase_update
@@ -13,10 +14,12 @@ class Assignment < ActiveRecord::Base
 	  loop do
 	    self.class.connection.raw_connection.wait_for_notify do |event, pid, assignment|
 	      yield assignment
+	      self.class.connection.execute "UNLISTEN #{channel}"
+	      self.class.connection.close_connection
 	    end
 	  end
 	ensure
-	  self.class.connection.execute "UNLISTEN #{channel}"
+		self.class.connection.execute "UNLISTEN #{channel}"
 	end
 
 	private

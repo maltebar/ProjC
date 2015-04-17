@@ -7,6 +7,8 @@ class CreateAssignments < ActiveRecord::Migration
     	t.boolean :active
     	t.text :solution
       t.integer :phase, default: 0
+      t.text :pretest
+      t.text :posttest
 
       t.timestamps
     end

@@ -4,8 +4,14 @@ class AssignmentsController < ApplicationController
   respond_to :html
 
 
-  def review
+  def studentreview
     @assignment = Assignment.find(params[:assignment])
+    @user = User.find(params[:user])
+  end
+
+  def adminreview
+    @assignment = Assignment.find(params[:assignment])
+    @users = User.where.not(admin: true)
   end
 
 
@@ -16,10 +22,14 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    # Assignment.phase_changed do |data|
-    #   sse.write(data)
-    # end
     @assignment = Assignment.find(params[:id])
+    @other_assignments = Assignment.where.not(id: @assignment.id) 
+    if current_user.admin?
+      @assignment.update(active: true)
+      @other_assignments.each do |assignment|
+        assignment.update(active: false)
+      end
+    end
     respond_with(@assignment)
   end
 
@@ -36,6 +46,18 @@ class AssignmentsController < ApplicationController
     current_phase = @assignment.phase
     if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
+    else
+      @assignment.phase = 0
+    end
+    @assignment.save
+    respond_with(@assignment)
+  end
+
+  def backward_phase
+    @assignment = Assignment.find(params[:id])
+    current_phase = @assignment.phase
+    if current_phase - 1 > 0
+      @assignment.phase = current_phase - 1
     else
       @assignment.phase = 0
     end
@@ -81,6 +103,6 @@ class AssignmentsController < ApplicationController
     end
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :complete, :active, :solution, :phase) 
+      params.require(:assignment).permit(:title, :description, :complete, :active, :solution, :phase, :pretest, :posttest) 
     end
 end

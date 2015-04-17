@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pairs
+
   devise_for :users
 
   resources :notes
@@ -17,11 +19,13 @@ Rails.application.routes.draw do
     root 'assignments#index'
   end
 
-  get 'assignments/review/:assignment' => 'assignments#review'
+  get 'assignments/studentreview/:assignment/:user' => 'assignments#studentreview'
+  get 'assignments/adminreview/:assignment' => 'assignments#adminreview'
 
   get 'browser' => 'browser#index'
 
   post 'assignments/forward_phase'
+  post 'assignments/backward_phase'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

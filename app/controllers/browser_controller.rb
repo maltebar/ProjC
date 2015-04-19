@@ -13,7 +13,7 @@ class BrowserController < ApplicationController
     unless @assignment.nil?
       begin
         @assignment.on_phase_change do |r|
-          sse.write('hello', :event => 'refresh')
+          sse.write('hello', :event => r)
         end
            
           

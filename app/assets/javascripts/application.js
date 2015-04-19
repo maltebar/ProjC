@@ -19,7 +19,40 @@
 jQuery(document).ready(function() {
   setTimeout(function() {
     var source = new EventSource('/browser');
-    source.addEventListener('refresh', function(e) {
+    source.addEventListener('phase0to1', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase1to2', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase2to3', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase3to4', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase4to5', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase5to6', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase6to5', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase5to4', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase4to3', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase3to2', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase2to1', function(e) {
+      window.location.reload();
+    });
+    source.addEventListener('phase1to0', function(e) {
       window.location.reload();
     });
   }, 1);

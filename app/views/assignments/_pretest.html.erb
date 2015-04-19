@@ -1,2 +1,7 @@
 <h1><%=@assignment.title%></h1>
 <h3><%=@assignment.pretest%></h3>
+
+<%=form_for(@submission) do |f|%>
+	<%= f.text_area :pretest%>
+	<%= f.submit%>
+<%end%>

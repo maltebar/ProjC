@@ -6,3 +6,6 @@ To start the server:
 
 To start the PostgresSQL server (to get its command line):
 	pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+To get to the PostgreSQL prompt:
+	psql -h localhost postgres

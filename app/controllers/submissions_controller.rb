@@ -9,7 +9,8 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    respond_with(@submission)
+    @assignment = Assignment.find(params[:id])
+    redirect_to assignment_path(@assignment)
   end
 
   def new
@@ -42,6 +43,6 @@ class SubmissionsController < ApplicationController
     end
 
     def submission_params
-      params.require(:submission).permit(:content, :master)  
+      params.require(:submission).permit(:content, :pretest, :posttest)  
     end
 end

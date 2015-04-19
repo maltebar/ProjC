@@ -24,6 +24,14 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = Assignment.find(params[:id])
     @other_assignments = Assignment.where.not(id: @assignment.id) 
+    if !current_user.admin?
+      @submission = Submission.where(user_id: current_user.id, assignment_id: @assignment.id)
+      if @submission.empty?
+        @submission = Submission.create(user_id: current_user.id, assignment_id: @assignment.id)
+      else
+        @submission = Submission.find(Submission.where(user_id: current_user.id, assignment_id: @assignment.id))
+      end
+    end
     if current_user.admin?
       @assignment.update(active: true)
       @other_assignments.each do |assignment|

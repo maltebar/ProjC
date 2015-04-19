@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416175149) do
+ActiveRecord::Schema.define(version: 20150419141422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150416175149) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_id"
   end
 
   create_table "comments", force: true do |t|
@@ -40,6 +41,8 @@ ActiveRecord::Schema.define(version: 20150416175149) do
     t.integer  "line_number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "submission_id"
+    t.integer  "user_id"
   end
 
   create_table "notes", force: true do |t|
@@ -47,18 +50,23 @@ ActiveRecord::Schema.define(version: 20150416175149) do
     t.boolean  "general"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "submission_id"
   end
 
   create_table "pairs", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "assignment_id"
   end
 
   create_table "submissions", force: true do |t|
     t.text     "content"
-    t.boolean  "master"
+    t.text     "pretest"
+    t.text     "posttest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "assignment_id"
   end
 
   create_table "users", force: true do |t|

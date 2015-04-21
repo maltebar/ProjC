@@ -57,8 +57,34 @@ class AssignmentsController < ApplicationController
     else
       @assignment.phase = 0
     end
+
     @assignment.save
+    if current_phase == 1
+      make_random_pairs
+    end
     respond_with(@assignment)
+  end
+
+  def make_random_pairs
+    @assignment = Assignment.find(params[:id])
+    @users = User.where.not(admin: true)
+    num_pairs = @users.count / 2
+    if @users.count.odd?
+      @pair = Pair.create(assignment_id: @assignment.id)
+      @user = @users.sample
+      @users = @users.where.not(id: @user.id)
+      @pair << @user
+      #add dummy user to pair
+    end
+    for i in 1..num_pairs
+      @user1 = @users.sample
+      @users = @users.where.not(id: @user1.id)
+      @user2 = @users.sample
+      @users = @users.where.not(id: @user2.id)
+      @pair = Pair.create(assignment_id: @assignment.id)
+      @pair.users << @user1
+      @pair.users << @user2
+    end
   end
 
   def backward_phase
@@ -68,6 +94,10 @@ class AssignmentsController < ApplicationController
       @assignment.phase = current_phase - 1
     else
       @assignment.phase = 0
+    end
+    if current_phase == 2
+      @pairs = Pair.where(assignment_id: @assignment.id)
+      @pairs.destroy_all
     end
     @assignment.save
     respond_with(@assignment)

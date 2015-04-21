@@ -75,11 +75,7 @@
 <%if @assignment.phase != 6%>
 	<%= button_to 'Next Phase', :action => "forward_phase", :id => @assignment.id %>
 <%else%>
-	<%=form_for(@assignment) do |g|%>
-		<%= g.hidden_field :active, value: false %>
-		<%= g.hidden_field :complete, value: true %>
-		<%= g.submit "Complete Assignment"%>
-	<%end%>
+	<%= button_to 'Complete Assignment', :action => "forward_phase", :id => @assignment.id %>
 <%end%>
 
 <br><br><br>

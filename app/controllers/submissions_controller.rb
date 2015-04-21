@@ -9,8 +9,13 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @assignment = Assignment.find(params[:id])
-    redirect_to assignment_path(@assignment)
+    @submission = Submission.find(params[:id])
+    @assignment = Assignment.find(@submission.assignment_id)
+    if @assignment.complete?
+      redirect_to root_path
+    else
+      redirect_to assignment_path(@assignment)
+    end
   end
 
   def new

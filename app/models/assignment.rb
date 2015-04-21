@@ -17,6 +17,8 @@ class Assignment < ActiveRecord::Base
 	    	self.class.connection.execute "NOTIFY #{channel}, 'phase4to5'"
 	    elsif phase_changed?(from: 5, to: 6)
 	    	self.class.connection.execute "NOTIFY #{channel}, 'phase5to6'"
+	    elsif phase_changed?(from: 6, to: 0)
+	    	self.class.connection.execute "NOTIFY #{channel}, 'phase6to0'"
 	    elsif phase_changed?(from: 6, to: 5)
 	    	self.class.connection.execute "NOTIFY #{channel}, 'phase6to5'"
 	    elsif phase_changed?(from: 5, to: 4)

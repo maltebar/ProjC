@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
   setTimeout(function() {
     var source = new EventSource('/browser');
     source.addEventListener('phase0to1', function(e) {
-      window.location.reload();
+      $("#submission_form").submit();
     });
     source.addEventListener('phase1to2', function(e) {
       window.location.reload();
@@ -36,6 +36,9 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase5to6', function(e) {
       window.location.reload();
+    });
+    source.addEventListener('phase6to0', function(e) {
+      $("#submission_form").submit();
     });
     source.addEventListener('phase6to5', function(e) {
       window.location.reload();

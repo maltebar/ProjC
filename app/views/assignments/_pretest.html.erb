@@ -1,7 +1,7 @@
 <h1><%=@assignment.title%></h1>
 <h3><%=@assignment.pretest%></h3>
 
-<%=form_for(@submission) do |f|%>
+<%=form_for(@submission, remote: true, html: {id: "submission_form"}) do |f|%>
 	<%= f.text_area :pretest%>
-	<%= f.submit%>
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <%end%>

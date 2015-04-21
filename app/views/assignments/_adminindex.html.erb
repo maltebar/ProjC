@@ -17,7 +17,7 @@
         <%if assignment.complete?%>
           <td><%= link_to 'Review', {:controller => "assignments", :action => "adminreview", :assignment => assignment.id} %></td>
         <%else%>
-          <td><%=link_to 'Open', assignment_path(assignment)%></td>
+          <td><%=link_to 'Open', assignment_path(assignment), data: { confirm: 'Are you ready to show this assignment to students?' }%></td>
         <%end%>
           <td><%= link_to 'Edit', edit_assignment_path(assignment) %> <br>
           <%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>       

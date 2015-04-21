@@ -64,9 +64,13 @@
 
 <br><br>
 <%# previous phase button unclickable in pretest phase and next phase changes to "complete assignment" in postest phase%>
-<%if @assignment.phase != 0%>
+<%if @assignment.phase != 0 && @assignment.phase != 2%>
 	<%= button_to 'Previous Phase', :action => "backward_phase", :id => @assignment.id %>
+<%elsif @assignment.phase == 2%>
+	<%= button_to 'Previous Phase', { action: "backward_phase", id: @assignment.id }, method: :backward_phase, data: { confirm: "This will delete all current pairs. Are you sure you want to proceed?" }%>
 <%end%>
+
+
 
 <%if @assignment.phase != 6%>
 	<%= button_to 'Next Phase', :action => "forward_phase", :id => @assignment.id %>

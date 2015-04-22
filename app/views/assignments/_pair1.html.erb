@@ -1,3 +1,25 @@
 <h1>Pair 1</h1>
 <h3><%=@assignment.title%></h3>
 <h5><%=@assignment.description%></h5>
+
+<div class="field">
+	<% @my_pair = Pair.find(User.find(current_user.id).pairs.where(assignment_id: @assignment.id))%>
+	<% @my_partner = User.find(@my_pair.users.where.not(id: current_user.id))%>
+	<% @partner_submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @my_partner.id))%>
+	<div id="editor1" style="height: 450px; width: 525px"><%= @partner_submission.content%></div>
+	<br><br>
+</div>
+
+
+<script src="ace.js" type="text/javascript" charset="utf-8"></script>
+
+<br><br><br>
+
+
+<script>
+  var editor1 = ace.edit("editor1");
+  editor1.setTheme("ace/theme/chrome");
+  editor1.getSession().setMode("ace/mode/java");
+  editor1.setReadOnly(true);
+    
+</script>

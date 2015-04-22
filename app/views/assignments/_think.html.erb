@@ -1,3 +1,24 @@
 <h1>Think</h1>
 <h3><%=@assignment.title%></h3>
 <h5><%=@assignment.description%></h5>
+
+
+<%= form_for(@submission, html: { id: "submission_form" }) do |f| %>
+	<div class="field">
+    	<%= f.label :content, "Code" %><br>
+    	<%= f.hidden_field :content, {:id => 'content_field'}%>
+    	<div id="editor1" style="height: 450px; width: 525px"><%= @submission.content%></div>
+    	<br><br>
+    </div>
+<%end%>
+
+<script src="ace.js" type="text/javascript" charset="utf-8"></script>
+
+<br><br><br>
+
+
+<script>
+  var editor1 = ace.edit("editor1");
+  editor1.setTheme("ace/theme/chrome");
+  editor1.getSession().setMode("ace/mode/java");   
+</script>

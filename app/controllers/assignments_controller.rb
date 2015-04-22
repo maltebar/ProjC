@@ -72,20 +72,26 @@ class AssignmentsController < ApplicationController
 
   def make_random_pairs
     @assignment = Assignment.find(params[:id])
-    @users = User.where.not(admin: true)
-    num_pairs = @users.count / 2
-    if @users.count.odd?
+    @users = User.where.not(admin:true)
+    @valid_users = []
+    @users.each do |user|
+      if Submission.where(assignment_id: @assignment.id, user_id: user.id).exists?
+        @valid_users << user
+      end
+    end
+    num_pairs = @valid_users.count / 2
+    if @valid_users.count.odd?
       @pair = Pair.create(assignment_id: @assignment.id)
-      @user = @users.sample
-      @users = @users.where.not(id: @user.id)
-      @pair << @user
+      @user = @valid_users.sample
+      @valid_users = @valid_users - [@user]
+      @pair.users << @user
       #add dummy user to pair
     end
     for i in 1..num_pairs
-      @user1 = @users.sample
-      @users = @users.where.not(id: @user1.id)
-      @user2 = @users.sample
-      @users = @users.where.not(id: @user2.id)
+      @user1 = @valid_users.sample
+      @valid_users = @valid_users - [@user1]
+      @user2 = @valid_users.sample
+      @valid_users = @valid_users - [@user2]
       @pair = Pair.create(assignment_id: @assignment.id)
       @pair.users << @user1
       @pair.users << @user2

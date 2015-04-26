@@ -13,7 +13,7 @@ body {
 }
 
 a.navbar-inverse {
-  background-color: #ffffff !important; //red: ff0000
+  background-color: #3eaec7 !important; //red: ff0000
 }
 
 a.navbar-nickname {
@@ -27,6 +27,7 @@ a.navbar-nickname {
 
 a{
   &:hover {
+    color: #29a6c1 !important;
     text-decoration: none;
   } 
 }

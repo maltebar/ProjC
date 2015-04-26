@@ -12,6 +12,10 @@ body {
 	background: #ffffff !important;
 }
 
+.navbar-inverse {
+  background-color: #ffffff !important; //red: ff0000
+}
+
 a.navbar-nickname {
 	color: #9d9d9d !important; //changes colour of "logged in as: " without messing up hover-white! CAPS NECESSARY 4 THIS?
 	&:hover {

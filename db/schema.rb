@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150421132453) do
     t.text     "content"
     t.text     "pretest"
     t.text     "posttest"
+    t.integer  "length",        default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

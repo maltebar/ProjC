@@ -74,6 +74,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @users = User.where.not(admin:true)
     @valid_users = []
+    @dummy = User.find(User.where(name:'Ghost'))
     @users.each do |user|
       if Submission.where(assignment_id: @assignment.id, user_id: user.id).exists?
         @valid_users << user
@@ -85,7 +86,8 @@ class AssignmentsController < ApplicationController
       @user = @valid_users.sample
       @valid_users = @valid_users - [@user]
       @pair.users << @user
-      #add dummy user to pair
+      @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id)
+      @pair.users << @dummy
     end
     for i in 1..num_pairs
       @user1 = @valid_users.sample

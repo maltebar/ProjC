@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
   end
 
   def show
-    respond_with(@comment)
+    @comment = Comment.find(params[:id])
+    @assignment = Assignment.find(@comment.submission.assignment_id)
+    redirect_to assignment_path(@assignment)
   end
 
   def new

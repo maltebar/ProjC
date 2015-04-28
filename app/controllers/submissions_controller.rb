@@ -48,6 +48,6 @@ class SubmissionsController < ApplicationController
     end
 
     def submission_params
-      params.require(:submission).permit(:content, :pretest, :posttest)  
+      params.require(:submission).permit(:content, :pretest, :posttest, :length)  
     end
 end

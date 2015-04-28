@@ -4,6 +4,7 @@ class CreateSubmissions < ActiveRecord::Migration
     	t.text :content
     	t.text :pretest
     	t.text :posttest
+    	t.integer :length, default: 0
 
       t.timestamps
     end

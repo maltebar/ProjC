@@ -17,7 +17,6 @@
 		<table>
 		   <tr>
 		      <td>
-
 		      	<%length = @partner_submission.length%>
 		      	<%for i in 1..length%>
 			      	<% if !current_user.admin?
@@ -28,21 +27,36 @@
 						    	@comment = Comment.find(Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i))
 						    end
 					    end%>
-			         <div style="border: 1px solid black; background-color: #ffffff; padding: 5px;">
+			         <div style="border: 1px solid black; background-color: #ffffff; padding: 1px">
 			            +
 			        </div>
-			        <div>
-				        <%=form_for(@comment, remote: true, html: {id: "comment_form"}) do |f|%>
-				        		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-				            	<%=f.text_field :content%>
-				        <%end%>
-				    </div>
-
 			    <%end%>
-		      </td>
+			  </td>
 		  </tr>
 		</table>
 	</td>
+
+	<td valign="top">
+		<table>
+		   <tr>
+		      <td>
+			    <% @comments = Comment.where(submission_id: @partner_submission.id).order('line_number ASC')%>
+			    <%=form_for(@partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
+			    	<%@comments.each do |comment|%>
+			    		<%=f.fields_for :comments, comment do |c|%>
+			    			<div>
+				    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					            <%= c.text_field :content, :size=>"60", :maxlength=>"73" %>
+				        	</div>
+				        <%end%>
+				    <%end%>
+				<%end%>
+			</td>
+		  </tr>
+		</table>
+	</td>
+
+
 </table>
 
 
@@ -55,6 +69,9 @@
   var editor1 = ace.edit("editor1");
   editor1.setTheme("ace/theme/chrome");
   editor1.getSession().setMode("ace/mode/java");
+  editor1.setOptions({
+  	fontSize: "12.5pt"
+  });
   editor1.setReadOnly(true);
     
 </script>

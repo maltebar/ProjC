@@ -9,11 +9,19 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :submissions
+  resources :submissions do
+    resources :comments
+  end
 
-  resources :assignments
+  resources :assignments do
+    resources :submissions
+  end
 
-  resources :users
+
+  resources :users do 
+    resources :assignments
+    resources :comments
+  end
 
   authenticate :user do
     root 'assignments#index'

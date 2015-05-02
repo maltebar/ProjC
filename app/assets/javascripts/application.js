@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require ace-builds/src-noconflict/ace
+//= require private_pub
+//= require chat
 //= require turbolinks
 //= require_tree .
 

@@ -1,6 +1,9 @@
 <h1>Pair 2</h1>
 <h3><%=@assignment.title%></h3>
 <h5><%=@assignment.description%></h5>
+<% @my_pair = Pair.find(User.find(current_user.id).pairs.where(assignment_id: @assignment.id))%>
+<% @my_partner = User.find(@my_pair.users.where.not(id: current_user.id))%>
+<% @partner_submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @my_partner.id))%>
 
 
 	<td>
@@ -8,7 +11,7 @@
 		   <tr>
 		      <td>
 		         <div style="border: 1px solid black; background-color: #ffffff; padding: 5px;">
-		            <a id="myHeader1-2" href="javascript:showonlyonev2('newboxes1-2');" >+</a>
+		         	<%= link_to "+", "javascript:showonlyonev2('newboxes1-2');", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => 8%>
 		         </div>
 		         <div class="newboxes-2" id="newboxes1-2" style="border: 1px solid black; background-color: #CCCCCC; display: block;padding: 5px;">Div #1</div>
 		      </td>

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   resources :notes
 
-  resources :chats
-
-  resources :comments
+  resources :comments do
+    resources :conversations
+  end
 
   resources :submissions do
     resources :comments
@@ -15,20 +15,33 @@ Rails.application.routes.draw do
 
   resources :assignments do
     resources :submissions
+    resources :conversations
   end
-
 
   resources :users do 
     resources :assignments
     resources :comments
   end
 
+  resources :conversations do
+    resources :messages
+  end
+
   authenticate :user do
     root 'assignments#index'
   end
 
+  unauthenticated :user do
+    devise_scope :user do
+      get "/" => "devise/sessions#new"
+    end
+  end
+
+
   get 'assignments/studentreview/:assignment/:user' => 'assignments#studentreview'
   get 'assignments/adminreview/:assignment' => 'assignments#adminreview'
+  get 'assignments/conversations/:id' => 'conversations#show'
+
 
   get 'browser' => 'browser#index'
 

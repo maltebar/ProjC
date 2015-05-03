@@ -9,17 +9,19 @@ html {
 
 body {
 	padding: 90px;
-	background: #ffffff !important;
+	background: #fbfbfb !important;
 }
 
-a.navbar-inverse {
-  background-color: #3eaec7 !important; //red: ff0000
+.navbar-inverse { //changes colour of (black) header
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    background-image: none !important;
 }
 
 a.navbar-nickname {
-	color: #9d9d9d !important; //changes colour of "logged in as: " without messing up hover-white! CAPS NECESSARY 4 THIS?
+	color: #9d9d9d !important; //changes colour of "logged in as: "; initial colour
 	&:hover {
-    color: #ffffff !important;
+    color: #ffffff !important; //HOVER COLOUR
     background-color: transparent !important;
     text-decoration: none;
   } 
@@ -27,11 +29,15 @@ a.navbar-nickname {
 
 a{
   &:hover {
-    color: #29a6c1 !important;
+    color: #DDBE3E !important;
     text-decoration: none;
   } 
 }
 
 input {
     line-height: 0.1em;
+}
+
+h1 {
+  color: #000000 !important;
 }

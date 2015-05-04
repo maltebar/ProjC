@@ -42,6 +42,6 @@ class PairsController < ApplicationController
     end
 
     def pair_params
-      params[:pair]
+      params.require(:pair).permit(:partner_1, :partner_2)
     end
 end

@@ -80,14 +80,23 @@ class AssignmentsController < ApplicationController
         @valid_users << user
       end
     end
+    if @valid_users.include? @dummy 
+      @valid_users = @valid_users - [@dummy]
+    end
     num_pairs = @valid_users.count / 2
     if @valid_users.count.odd?
       @pair = Pair.create(assignment_id: @assignment.id)
       @user = @valid_users.sample
       @valid_users = @valid_users - [@user]
       @pair.users << @user
-      @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id)
+      @pair.update(partner_1: @user.id) 
+      if Submission.where(assignment_id: @assignment.id, user_id: @dummy.id).exists?
+        @submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @dummy.id))
+      else
+        @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id)
+      end
       @pair.users << @dummy
+      @pair.update(partner_2: @dummy.id)
     end
     for i in 1..num_pairs
       @user1 = @valid_users.sample
@@ -96,7 +105,9 @@ class AssignmentsController < ApplicationController
       @valid_users = @valid_users - [@user2]
       @pair = Pair.create(assignment_id: @assignment.id)
       @pair.users << @user1
+      @pair.update(partner_1: @user1.id)
       @pair.users << @user2
+      @pair.update(partner_2: @user2.id)
     end
   end
 

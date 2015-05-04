@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 20150502134926) do
   end
 
   create_table "pairs", force: true do |t|
+    t.integer  "partner_1"
+    t.integer  "partner_2"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "assignment_id"

@@ -9,3 +9,7 @@ To start the PostgresSQL server (to get its command line):
 
 To get to the PostgreSQL prompt:
 	psql -h localhost postgres
+
+
+To start Faye server:
+rackup private_pub.ru -s puma -E production

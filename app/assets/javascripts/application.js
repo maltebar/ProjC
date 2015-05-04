@@ -23,6 +23,7 @@ jQuery(document).ready(function() {
     var source = new EventSource('/browser');
     source.addEventListener('phase0to1', function(e) {
       $("#submission_form").submit();
+      window.location.reload();
     });
     source.addEventListener('phase1to2', function(e) {
       var editor1 = ace.edit("editor1");
@@ -34,6 +35,7 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase2to3', function(e) {
       $("#comment_form").submit();
+      window.location.reload();
     });
     source.addEventListener('phase3to4', function(e) {
       window.location.reload();
@@ -46,6 +48,7 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase6to0', function(e) {
       $("#submission_form").submit();
+      window.location.reload();
     });
     source.addEventListener('phase6to5', function(e) {
       window.location.reload();
@@ -60,6 +63,7 @@ jQuery(document).ready(function() {
       window.location.reload();
     });
     source.addEventListener('phase2to1', function(e) {
+      $("#comment_form").submit();
       window.location.reload();
     });
     source.addEventListener('phase1to0', function(e) {

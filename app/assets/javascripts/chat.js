@@ -60,12 +60,6 @@ var ready = function () {
                 chatbox_id = chatBoxes[x];
  
                 if ($("#chatbox_" + chatbox_id).css('display') != 'none') {
-                    if (align == 0) {
-                        $("#chatbox_" + chatbox_id).css('right', '20px');
-                    } else {
-                        width = (align) * (280 + 7) + 20;
-                        $("#chatbox_" + chatbox_id).css('right', width + 'px');
-                    }
                     align++;
                 }
             }
@@ -90,18 +84,22 @@ var ready = function () {
                     $("#chatbox_" + conversation_id).css('display', 'block');
                     chatBox.restructure();
                 }
+                else{
+                    $("#chatbox_" + conversation_id).css('display', 'none');
+                    chatBox.restructure();
+                }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
                 return;
             }
  
-            $("body").append('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>')
+            $('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>').appendTo(".chat_5");
  
             $.get("conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);
                 $("#chatbox_" + conversation_id + " .chatboxcontent").scrollTop($("#chatbox_" + conversation_id + " .chatboxcontent")[0].scrollHeight);
             }, "html");
  
-            $("#chatbox_" + conversation_id).css('bottom', '0px');
+            $("#chatbox_" + conversation_id).css('position', 'absolute');
  
             chatBoxeslength = 0;
  
@@ -111,12 +109,6 @@ var ready = function () {
                 }
             }
  
-            if (chatBoxeslength == 0) {
-                $("#chatbox_" + conversation_id).css('right', '20px');
-            } else {
-                width = (chatBoxeslength) * (280 + 7) + 20;
-                $("#chatbox_" + conversation_id).css('right', width + 'px');
-            }
  
             chatBoxes.push(conversation_id);
  

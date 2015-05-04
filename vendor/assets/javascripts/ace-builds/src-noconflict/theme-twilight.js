@@ -45,7 +45,7 @@ color: rgba(255, 255, 255, 0.25)\
 }\
 .ace-twilight .ace_keyword,\
 .ace-twilight .ace_meta {\
-color: #CDA869\
+color: #C63D0F\
 }\
 .ace-twilight .ace_constant,\
 .ace-twilight .ace_constant.ace_character,\

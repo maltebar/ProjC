@@ -9,17 +9,17 @@ html {
 
 body {
 	padding: 90px;
-	background: #fbfbfb !important;
+	background: #FDF3E7 !important;
 }
 
 .navbar-inverse { //changes colour of (black) header
-    background-color: #000000 !important;
-    border-color: #000000 !important;
+    background-color: #3B3738 !important;
+    border-color: #3B3738 !important;
     background-image: none !important;
 }
 
 a.navbar-nickname {
-	color: #9d9d9d !important; //changes colour of "logged in as: "; initial colour
+	color: #7E8F7C !important; //changes colour of "logged in as: "; initial colour
 	&:hover {
     color: #ffffff !important; //HOVER COLOUR
     background-color: transparent !important;
@@ -29,7 +29,8 @@ a.navbar-nickname {
 
 a{
   &:hover {
-    color: #DDBE3E !important;
+    color: #C63D0F !important;
+    background-color: transparent !important;
     text-decoration: none;
   } 
 }

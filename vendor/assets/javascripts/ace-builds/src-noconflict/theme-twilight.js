@@ -3,19 +3,19 @@ ace.define("ace/theme/twilight",["require","exports","module","ace/lib/dom"], fu
 exports.isDark = true;
 exports.cssClass = "ace-twilight";
 exports.cssText = ".ace-twilight .ace_gutter {\
-background: #232323;\
+background: #222020;\
 color: #E2E2E2\
 }\
 .ace-twilight .ace_print-margin {\
 width: 1px;\
-background: #232323\
+background: #222020\
 }\
 .ace-twilight {\
 background-color: #141414;\
 color: #F8F8F8\
 }\
 .ace-twilight .ace_cursor {\
-color: #A7A7A7\
+color: #6C82A9\
 }\
 .ace-twilight .ace_marker-layer .ace_selection {\
 background: rgba(221, 240, 255, 0.20)\
@@ -45,7 +45,7 @@ color: rgba(255, 255, 255, 0.25)\
 }\
 .ace-twilight .ace_keyword,\
 .ace-twilight .ace_meta {\
-color: #C63D0F\
+color: #d45429\
 }\
 .ace-twilight .ace_constant,\
 .ace-twilight .ace_constant.ace_character,\
@@ -54,7 +54,7 @@ color: #C63D0F\
 .ace-twilight .ace_heading,\
 .ace-twilight .ace_markup.ace_heading,\
 .ace-twilight .ace_support.ace_constant {\
-color: #CF6A4C\
+color: #6C82A9\
 }\
 .ace-twilight .ace_invalid.ace_illegal {\
 color: #F8F8F8;\
@@ -73,7 +73,7 @@ background-color: #AC885B;\
 border-color: #F8F8F8\
 }\
 .ace-twilight .ace_support.ace_function {\
-color: #DAD085\
+color: #DDBE3E\
 }\
 .ace-twilight .ace_list,\
 .ace-twilight .ace_markup.ace_list,\
@@ -86,17 +86,17 @@ color: #F9EE98\
 color: #AC885B\
 }\
 .ace-twilight .ace_string {\
-color: #8F9D6A\
+color: #99AE5F\
 }\
 .ace-twilight .ace_string.ace_regexp {\
 color: #E9C062\
 }\
 .ace-twilight .ace_comment {\
 font-style: italic;\
-color: #5F5A60\
+color: #9A949A\
 }\
 .ace-twilight .ace_variable {\
-color: #7587A6\
+color: #99A0AB\
 }\
 .ace-twilight .ace_xml-pe {\
 color: #494949\

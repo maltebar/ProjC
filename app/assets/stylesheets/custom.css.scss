@@ -8,28 +8,32 @@ html {
 }
 
 body {
-	padding: 90px;
-	background: #FDF3E7 !important;
+  padding-top: 78px;
+  padding-left: 80px;
+  padding-right: 80px;
+  background: #fbfafa !important; //light silver
 }
 
-.navbar-inverse { //changes colour of (black) header
-    background-color: #3B3738 !important;
-    border-color: #3B3738 !important;
+.navbar-inverse { //changes colour of (originally black) header
+    background-color: #000000 !important;
+    border-color: #DDBE3E !important; 
     background-image: none !important;
 }
 
+//changes colour of "logged in as: "
 a.navbar-nickname {
-	color: #7E8F7C !important; //changes colour of "logged in as: "; initial colour
-	&:hover {
-    color: #ffffff !important; //HOVER COLOUR
+  color: #ffffff !important; //hover colour
+  &:hover {
     background-color: transparent !important;
     text-decoration: none;
   } 
 }
 
 a{
-  &:hover {
-    color: #C63D0F !important;
+  color: #DDBE3E !important; 
+
+  &:hover { //hover of main header words (i.e. Java Programming...)
+    color: #ffffff !important; //hover of main header words
     background-color: transparent !important;
     text-decoration: none;
   } 
@@ -40,5 +44,17 @@ input {
 }
 
 h1 {
+  color: #d45429 !important;
+}
+
+h3 {
+  color: #000000 !important;
+}
+
+h4 {
+  color: #000000 !important;
+}
+
+h5 {
   color: #000000 !important;
 }

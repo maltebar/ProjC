@@ -15,7 +15,7 @@ var ready = function () {
         var comment_id = $(this).data('comid');
  
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, comment_id: comment_id }, function (data) {
-            chatBox.chatWith(data.conversation_id);
+            chatBox.chatWith(comment_id, data.conversation_id);
         });
     });
  
@@ -62,7 +62,8 @@ var ready = function () {
         e.preventDefault();
  
         var conversation_id = $(this).data('cid');
-        chatBox.chatWith(conversation_id);
+        var comment_id = $(this).data('comid');
+        chatBox.chatWith(comment_id, conversation_id);
     });
  
  

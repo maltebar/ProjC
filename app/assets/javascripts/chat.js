@@ -22,9 +22,9 @@ var ready = function () {
          * @param conversation_id
          */
  
-        chatWith: function (conversation_id) {
+        chatWith: function (comment_id, conversation_id) {
  
-            chatBox.createChatBox(conversation_id);
+            chatBox.createChatBox(comment_id, conversation_id);
             $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
         },
  
@@ -78,7 +78,7 @@ var ready = function () {
          * @param minimizeChatBox
          */
  
-        createChatBox: function (conversation_id, minimizeChatBox) {
+        createChatBox: function (comment_id, conversation_id, minimizeChatBox) {
             if ($("#chatbox_" + conversation_id).length > 0) {
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
@@ -92,7 +92,7 @@ var ready = function () {
                 return;
             }
  
-            $('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>').appendTo(".chat_5");
+            $('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>').appendTo(".chat_"+comment_id);
  
             $.get("conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);

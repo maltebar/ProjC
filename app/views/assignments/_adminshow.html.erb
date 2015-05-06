@@ -1,6 +1,8 @@
 
-<h1><%=@assignment.title%></h1>
-<h4><%=@assignment.description%></h4>
+<h1 align="center"><%=@assignment.title%></h1>
+<br>
+<h3 align="center"><%=@assignment.description%></h3>
+<br>
 
 <br><br>
 
@@ -62,25 +64,27 @@
 	</tr>
 </table>
 
-<br><br>
+
+
+
+<br><br><br>
 <%# previous phase button unclickable in pretest phase and next phase changes to "complete assignment" in postest phase%>
 <%if @assignment.phase != 0 && @assignment.phase != 2%>
-	<%= button_to 'Previous Phase', :action => "backward_phase", :id => @assignment.id %>
+
+	<%= button_to 'Previous Phase', {:action => "backward_phase", :id => @assignment.id }, {:class => "previous_phase"} %>
 <%elsif @assignment.phase == 2%>
-	<%= button_to 'Previous Phase', { action: "backward_phase", id: @assignment.id }, method: :backward_phase, data: { confirm: "This will delete all current pairs. Are you sure you want to proceed?" }%>
+	<%= button_to 'Previous Phase', { action: "backward_phase", id: @assignment.id , :class => "previous_phase"}, method: :backward_phase, data: { confirm: "This will delete all current pairs. Are you sure you want to proceed?" }%>
 <%end%>
 
 
 
 <%if @assignment.phase != 6%>
-	<%= button_to 'Next Phase', :action => "forward_phase", :id => @assignment.id %>
+	<%= button_to 'Next Phase', {:action => "forward_phase", :id => @assignment.id }, {:class => "next_phase"} %>
 <%else%>
-	<%= button_to 'Complete Assignment', :action => "forward_phase", :id => @assignment.id %>
+	<%= button_to 'Complete Assignment', {:action => "forward_phase", :id => @assignment.id }, {:class => "next_phase"} %>
 <%end%>
 
 <br><br><br>
-
-TIMER or render solution
 
 <%if @assignment.phase == 5%>
 	<%= render 'solution'%>

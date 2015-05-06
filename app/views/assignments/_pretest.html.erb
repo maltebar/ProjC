@@ -1,5 +1,7 @@
-<h1><%=@assignment.title%></h1>
+<h1 align="center"><%=@assignment.title%></h1>
+<br>
 <h3><%=@assignment.pretest%></h3>
+<br>
 
 <%=form_for(@submission, remote: true, html: {id: "submission_form"}) do |f|%>
 	<%= f.text_area :pretest%>

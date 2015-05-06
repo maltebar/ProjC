@@ -1,6 +1,7 @@
-<h1>Pair 1</h1>
+<h1 align="center">Pair 1</h1>
 <h3><%=@assignment.title%></h3>
-<h5><%=@assignment.description%></h5>
+<h4><%=@assignment.description%></h4>
+<br>
 
 <table>
 	<td>
@@ -67,7 +68,7 @@
 
 <script>
   var editor1 = ace.edit("editor1");
-  editor1.setTheme("ace/theme/monokai");
+  editor1.setTheme("ace/theme/twilight");
   editor1.getSession().setMode("ace/mode/java");
   editor1.setOptions({
   	fontSize: "12.5pt"

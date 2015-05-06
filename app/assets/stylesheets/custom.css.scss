@@ -11,7 +11,7 @@ body {
   padding-top: 78px;
   padding-left: 80px;
   padding-right: 80px;
-  background: #fbfafa !important; //light silver
+  background: #ffffff !important; //white
 }
 
 .navbar-inverse { //changes colour of (originally black) header
@@ -57,4 +57,16 @@ h4 {
 
 h5 {
   color: #000000 !important;
+}
+
+input.next_phase {
+  float: right; 
+}
+
+input.previous_phase {
+  float: left; 
+}
+
+.editor {
+  
 }

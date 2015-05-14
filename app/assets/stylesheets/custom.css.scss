@@ -16,7 +16,7 @@ body {
 
 .navbar-inverse { //changes colour of (originally black) header
     background-color: #000000 !important;
-    border-color: #DDBE3E !important; 
+    border-color: #4ED430 !important; 
     background-image: none !important;
 }
 
@@ -30,10 +30,10 @@ a.navbar-nickname {
 }
 
 a{
-  color: #DDBE3E !important; 
+  color: #4ED430 !important; 
 
   &:hover { //hover of main header words (i.e. Java Programming...)
-    color: #ffffff !important; //hover of main header words
+    color: #CECECE !important; //hover of main header words
     background-color: transparent !important;
     text-decoration: none;
   } 
@@ -44,7 +44,7 @@ input {
 }
 
 h1 {
-  color: #d45429 !important;
+  color: #4ED430 !important;
 }
 
 h3 {

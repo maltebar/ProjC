@@ -32,10 +32,10 @@ margin: -1px 0 0 -1px;\
 border: 1px solid rgba(255, 255, 255, 0.25)\
 }\
 .ace-twilight .ace_marker-layer .ace_active-line {\
-background: rgba(255, 255, 255, 0.079)\
+background: rgba(255, 255, 255, 0.074)\
 }\
 .ace-twilight .ace_gutter-active-line {\
-background-color: rgba(255, 255, 255, 0.079)\
+background-color: rgba(255, 255, 255, 0.074)\
 }\
 .ace-twilight .ace_marker-layer .ace_selected-word {\
 border: 1px solid rgba(221, 240, 255, 0.20)\
@@ -54,7 +54,7 @@ color: #4ED430\
 .ace-twilight .ace_heading,\
 .ace-twilight .ace_markup.ace_heading,\
 .ace-twilight .ace_support.ace_constant {\
-color: #6C82A9\
+color: #fbe404\
 }\
 .ace-twilight .ace_invalid.ace_illegal {\
 color: #F8F8F8;\
@@ -73,7 +73,7 @@ background-color: #AC885B;\
 border-color: #F8F8F8\
 }\
 .ace-twilight .ace_support.ace_function {\
-color: #3154ff\
+color: #3173FF\
 }\
 .ace-twilight .ace_list,\
 .ace-twilight .ace_markup.ace_list,\

@@ -16,7 +16,9 @@ body {
 
 .navbar-inverse { //changes colour of (originally black) header
     background-color: #000000 !important;
-    border-color: #4ED430 !important; 
+    border-color: #3154ff !important; 
+    //border-color: #000000 !important; 
+    border-bottom-width: 1px !important; 
     background-image: none !important;
 }
 
@@ -30,25 +32,42 @@ a.navbar-nickname {
 }
 
 a{
-  color: #4ED430 !important; 
+  color: #4CD62D !important; 
 
   &:hover { //hover of main header words (i.e. Java Programming...)
-    color: #CECECE !important; //hover of main header words
+    color: #CACACA !important; //hover of main header words
     background-color: transparent !important;
     text-decoration: none;
   } 
 }
 
-input {
-    line-height: 0.1em;
+.field_input {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px;
+    border: 2px solid #ff0000;
+    border-radius:2px;
 }
 
+input {
+  line-height: 0.1em;
+}
+
+.lightning {
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
+  border-radius:1px !important;
+}
+
+
 h1 {
-  color: #4ED430 !important;
+  color: #000000 !important;
+  //font-weight: bold !important;
 }
 
 h3 {
-  color: #000000 !important;
+  color: #4CD62D !important;
 }
 
 h4 {

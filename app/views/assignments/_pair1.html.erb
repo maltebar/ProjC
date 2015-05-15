@@ -28,8 +28,9 @@
 						    	@comment = Comment.find(Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i))
 						    end
 					    end%>
-			         <div style="border: 1px solid black; background-color: #ffffff; padding: 1px">
-			            +
+
+			         <div style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
+			             ϟ 
 			        </div>
 			    <%end%>
 			  </td>
@@ -47,7 +48,7 @@
 			    		<%=f.fields_for :comments, comment do |c|%>
 			    			<div>
 				    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-					            <%= c.text_field :content, :size=>"60", :maxlength=>"73" %>
+					            <%= c.text_field :content, :size=>"81", :maxlength=>"94", :class => "lightning" %>
 				        	</div>
 				        <%end%>
 				    <%end%>
@@ -71,8 +72,8 @@
   editor1.setTheme("ace/theme/twilight");
   editor1.getSession().setMode("ace/mode/java");
   editor1.setOptions({
-  	fontSize: "12.5pt"
-  });
+    fontSize: "11pt"
+  }); 
   editor1.setReadOnly(true);
     
 </script>

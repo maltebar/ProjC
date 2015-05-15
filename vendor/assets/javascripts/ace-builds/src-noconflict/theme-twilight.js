@@ -15,7 +15,7 @@ background-color: #141414;\
 color: #F8F8F8\
 }\
 .ace-twilight .ace_cursor {\
-color: #6C82A9\
+color: #bfbfbf\
 }\
 .ace-twilight .ace_marker-layer .ace_selection {\
 background: rgba(221, 240, 255, 0.20)\
@@ -32,10 +32,10 @@ margin: -1px 0 0 -1px;\
 border: 1px solid rgba(255, 255, 255, 0.25)\
 }\
 .ace-twilight .ace_marker-layer .ace_active-line {\
-background: rgba(255, 255, 255, 0.031)\
+background: rgba(255, 255, 255, 0.079)\
 }\
 .ace-twilight .ace_gutter-active-line {\
-background-color: rgba(255, 255, 255, 0.031)\
+background-color: rgba(255, 255, 255, 0.079)\
 }\
 .ace-twilight .ace_marker-layer .ace_selected-word {\
 border: 1px solid rgba(221, 240, 255, 0.20)\
@@ -45,7 +45,7 @@ color: rgba(255, 255, 255, 0.25)\
 }\
 .ace-twilight .ace_keyword,\
 .ace-twilight .ace_meta {\
-color: #d45429\
+color: #4ED430\
 }\
 .ace-twilight .ace_constant,\
 .ace-twilight .ace_constant.ace_character,\
@@ -73,7 +73,7 @@ background-color: #AC885B;\
 border-color: #F8F8F8\
 }\
 .ace-twilight .ace_support.ace_function {\
-color: #DDBE3E\
+color: #3154ff\
 }\
 .ace-twilight .ace_list,\
 .ace-twilight .ace_markup.ace_list,\
@@ -86,17 +86,17 @@ color: #F9EE98\
 color: #AC885B\
 }\
 .ace-twilight .ace_string {\
-color: #99AE5F\
+color: #fbe404\
 }\
 .ace-twilight .ace_string.ace_regexp {\
 color: #E9C062\
 }\
 .ace-twilight .ace_comment {\
 font-style: italic;\
-color: #9A949A\
+color: #bfbfbf\
 }\
 .ace-twilight .ace_variable {\
-color: #99A0AB\
+color: #fbe404\
 }\
 .ace-twilight .ace_xml-pe {\
 color: #494949\

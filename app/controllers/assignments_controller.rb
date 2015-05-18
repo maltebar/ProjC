@@ -11,7 +11,7 @@ class AssignmentsController < ApplicationController
 
   def adminreview
     @assignment = Assignment.find(params[:assignment])
-    @users = User.where.not(admin: true)
+    @users = User.where.not(admin: true, name:"Ghost")
   end
 
 

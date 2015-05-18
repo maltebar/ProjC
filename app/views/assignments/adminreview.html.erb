@@ -13,12 +13,30 @@
 
   <tbody>
     <% @users.each do |user| %> <%#table content: each row contains...%>
+      <% @my_submission = Submission.where(user_id: user.id, assignment_id: @assignment.id)%>
+      <% if User.find(user.id).pairs.where(assignment_id: @assignment.id).exists?%>
+        <% @my_pair = Pair.find(User.find(user.id).pairs.where(assignment_id: @assignment.id))%>
+        <% @my_partner = User.find(@my_pair.users.where.not(id: user.id))%>
+      <%end%>
+
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%#= partner name  %></td>
-        <td><%#= pretest answer%> </td> 
-        <td><%#= posttest answer  %></td>
+        <td>
+          <%if !@my_partner.nil?%> 
+            <%= @my_partner.name %>
+          <%end%>
+        </td>
+        <td>
+          <%if !@my_submission.empty?%> 
+            <%= Submission.find(@my_submission).pretest %>
+          <%end%>
+        </td> 
+        <td>
+          <%if !@my_submission.empty?%> 
+            <%= Submission.find(@my_submission).posttest %>
+          <%end%>
+        </td> 
         <td><%= link_to 'Review', {:controller => "assignments", :action => "studentreview", :assignment => @assignment.id, :user => user.id}%> </td>       
       </tr>
 

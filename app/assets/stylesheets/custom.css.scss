@@ -16,9 +16,8 @@ body {
 
 .navbar-inverse { //changes colour of (originally black) header
     background-color: #000000 !important;
-    border-color: #3154ff !important; 
-    //border-color: #000000 !important; 
-    border-bottom-width: 1px !important; 
+    //border-color: #3154ff !important; 
+    //border-bottom-width: 1px !important; 
     background-image: none !important;
 }
 
@@ -99,4 +98,65 @@ input.previous_phase {
 #submission_pretest {
   color: #000000 !important;
   border: 5px solid #000000 !important;
+}
+
+#time-elapsed {
+  width: 30%;
+  margin: 0 auto; 
+  font-size: 40pt;
+  padding: 30px;
+  border: 4px solid;
+  border-color: #000000;
+}
+
+#pause-timer {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #000000;
+  padding: 8px 20px 10px 20px;
+  border: solid #000000 4px;
+  text-decoration: none;
+  margin: 15px;
+}
+
+#pause-timer:hover {
+  background: #4CD62D;
+  background-image: -webkit-linear-gradient(top, #4CD62D, #232624);
+  background-image: -moz-linear-gradient(top, #4CD62D, #232624);
+  background-image: -ms-linear-gradient(top, #4CD62D, #232624);
+  background-image: -o-linear-gradient(top, #4CD62D, #232624);
+  background-image: linear-gradient(to bottom, #4CD62D, #232624);
+  text-decoration: none;
+}
+
+#restart-timer {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #000000;
+  padding: 8px 20px 10px 20px;
+  border: solid #000000 4px;
+  text-decoration: none;
+  margin: 15px;
+}
+
+#restart-timer:hover {
+  background: #4CD62D;
+  background-image: -webkit-linear-gradient(top, #4CD62D, #232624);
+  background-image: -moz-linear-gradient(top, #4CD62D, #232624);
+  background-image: -ms-linear-gradient(top, #4CD62D, #232624);
+  background-image: -o-linear-gradient(top, #4CD62D, #232624);
+  background-image: linear-gradient(to bottom, #4CD62D, #232624);
+  text-decoration: none;
+}
+
+#zoom {
+  color: #000000 !important;
 }

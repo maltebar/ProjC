@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 
 <h1 align="center"><%=@assignment.title%></h1>
 <br>
@@ -84,8 +86,72 @@
 	<%= button_to 'Complete Assignment', {:action => "forward_phase", :id => @assignment.id }, {:class => "next_phase"} %>
 <%end%>
 
-<br><br><br>
+<br>
 
 <%if @assignment.phase == 5%>
 	<%= render 'solution'%>
+<%else%>
+
+<br><br><br><br>
+
+	<body>
+
+	<h3 align="center">Time Elapsed</h3>
+
+	<br>
+
+	<div align="center", id="time-elapsed"></div>
+
+	<div align="center">
+		<button id="pause-timer"> | | </button><button id="restart-timer">↺</button>
+	</div>
+
+	<script>
+
+		var startTime = Date.now();
+		var paused = 0;
+		var updateDuration = 1000;  // one second
+
+		// Cache the jq objects
+		var $timeElapsed = $('#time-elapsed');
+		var $pauseTimer = $('#pause-timer');
+		var $restartTimer = $('#restart-timer');
+
+		setInterval(function() {
+		    var elapsed = Math.round((Date.now() - startTime) / 1000);  // seconds elapsed
+		    var hh = Math.floor(elapsed / 3600);
+		    var mm = Math.floor((elapsed - 3600 * hh) / 60);
+		    var ss = elapsed - 3600 * hh - 60 * mm;
+
+		    if (!paused) {
+		        $timeElapsed.html(zeroPad(mm) + ':' + zeroPad(ss));
+		    }
+		}, updateDuration);
+
+		function zeroPad(num) {
+	    	return '00'.substr(0, Math.max(0, 2 - num.toString().length)) + num;
+		}
+
+		$pauseTimer.on('click', function() {
+	    	if (paused) {
+	        	startTime = Date.now() - paused;
+	        	paused = 0;
+		    } else {
+		        paused = Date.now() - startTime;
+		    }
+		});
+
+		$restartTimer.on('click', function() {
+		    startTime = Date.now();
+		    paused = 0;
+		});
+
+	</script>
+
+	</body>
+
 <%end%>
+
+</html>
+
+<br><br><br>

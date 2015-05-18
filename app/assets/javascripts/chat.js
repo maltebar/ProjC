@@ -82,6 +82,15 @@ var ready = function () {
             if ($("#chatbox_" + conversation_id).length > 0) {
                 if ($("#chatbox_" + conversation_id).css('display') == 'none') {
                     $("#chatbox_" + conversation_id).css('display', 'block');
+                    $('.chatbox').each(function() {
+                        var current = $(this);
+                        if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){
+                            if(current.data('cid') != conversation_id) {
+                                $("#chatbox_" + current.data('cid')).css('display', 'none');
+                                current.restructure();
+                            }
+                        }
+                    });
                     chatBox.restructure();
                 }
                 else{
@@ -92,7 +101,16 @@ var ready = function () {
                 return;
             }
  
-            $('<div id="chatbox_' + conversation_id + '" class="chatbox"></div>').appendTo(".chat_"+comment_id);
+            $('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'"></div>').appendTo(".chat_"+comment_id);
+
+            $('.chatbox').each(function() {
+                var current = $(this);
+                if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){
+                    if(current.data('cid') != conversation_id) {
+                        $("#chatbox_" + current.data('cid')).css('display', 'none');
+                    }
+                }
+            });
  
             $.get("conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);

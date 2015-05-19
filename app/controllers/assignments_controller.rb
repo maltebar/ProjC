@@ -55,8 +55,7 @@ class AssignmentsController < ApplicationController
     if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
     else
-      @assignment.update(active: false, complete: true)
-      @assignment.phase = 0
+      @assignment.update(active: false, complete: true, phase: 0)
       if current_user.admin?
         redirect_to root_path
         return

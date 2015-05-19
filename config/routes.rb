@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :notes
+  resources :notes do
+    resources :assignments
+  end
 
   resources :comments do
     resources :conversations
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   resources :assignments do
     resources :submissions
     resources :conversations
+    resources :notes
   end
 
   resources :users do 

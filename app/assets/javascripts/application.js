@@ -49,9 +49,10 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase6to0', function(e) {
       $("#submission_form").submit();
-      window.location.reload();
+      window.location.replace('/')
     });
     source.addEventListener('phase6to5', function(e) {
+      $("#submission_form").submit();
       window.location.reload();
     });
     source.addEventListener('phase5to4', function(e) {

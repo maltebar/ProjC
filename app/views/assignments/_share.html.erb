@@ -22,7 +22,11 @@
 		<table>
 		   <tr>
 		      <td>
-		      	<% @my_notes = Note.create(submission_id: @my_submission.id)%>
+		      	<%if Note.where(submission_id: @my_submission.id).exists?%>
+		      		<% @my_notes = Note.find(Note.where(submission_id: @my_submission.id))%>
+		      	<%else%>
+		      		<% @my_notes = Note.create(submission_id: @my_submission.id)%>
+		      	<%end%>
 		      	<%=form_for(@my_notes, remote: true, html: {id: "note_form"}) do |f|%>
       				<div>
 		    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>

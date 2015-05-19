@@ -1,8 +1,7 @@
 <h1 align="center">Review</h1>
 <h3><%=@assignment.title%></h3>
-<br>
 <h4><%=@assignment.description%></h4>
-<br>
+<br><br>
 
 <% if User.find(@user.id).pairs.where(assignment_id: @assignment.id).exists?%>
     <% @my_pair = Pair.find(User.find(@user.id).pairs.where(assignment_id: @assignment.id))%>

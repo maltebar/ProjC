@@ -1,12 +1,11 @@
 <h1 align="center">Think</h1>
 <h3><%=@assignment.title%></h3>
-<br>
 <h4><%=@assignment.description%></h4>
 <br>
 
 <%= form_for(@submission, html: { id: "submission_form" }) do |f| %>
 	<div class="field">
-    	<%= f.label :content, "Code" %><br>
+    	<%#= f.label :content, "Code" %><br>
     	<%= f.hidden_field :content, {:id => 'content_field'}%>
     	<%= f.hidden_field :length, {:id => 'length_field'}%>
     	<div id="editor1" style="height: 450px; width: 570px"><%= @submission.content%></div>

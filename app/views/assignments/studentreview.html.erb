@@ -32,7 +32,7 @@
                     <% if !@user.admin?
                             @comment = Comment.where(submission_id: @my_submission.id, line_number: i)
                         end%>
-                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs show-conversation", "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
                 <%end%>
               </td>
           </tr>

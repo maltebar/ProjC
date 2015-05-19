@@ -13,7 +13,7 @@
 <table>
 	<td>
 		<div class="field">
-			<div id="editor1" style="height: 450px; width: 525px"><%= @my_submission.content%></div>
+			<div id="editor1" style="height: 450px; width: 570px"><%= @my_submission.content%></div>
 			<br><br>
 		</div>
 	</td>
@@ -22,39 +22,13 @@
 		<table>
 		   <tr>
 		      <td>
-		      	<%length = @my_submission.length%>
-		      	<%for i in 1..length%>
-			      	<% if !current_user.admin?
-			      			@comment = Comment.where(submission_id: @my_submission.id, line_number: i)
-					    end%>
-					<div id="zoom", style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
-		             	ϟ 
+		      	<% @my_notes = Note.create(submission_id: @my_submission.id)%>
+		      	<%=form_for(@my_notes, remote: true, html: {id: "note_form"}) do |f|%>
+      				<div>
+		    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			            <%= f.text_area :content, :class => "notes"%>
 		        	</div>
-			    <%end%>
-			  </td>
-		  </tr>
-		</table>
-	</td>
-
-	<td valign="top">
-		<table>
-		   <tr>
-		      <td>
-			    <% @comments = Comment.where(submission_id: @my_submission.id).order('line_number ASC')%>
-			    <%=form_for(@my_submission, remote: true, html: {id: "comment_form"}) do |f|%>
-			    	<%@comments.each do |comment|%>
-			    		<%=f.fields_for :comments, comment do |c|%>
-			    			<div>
-				    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-					            <%= c.text_field :content, :size=>"81", :maxlength=>"94", :class => "lightning", :readonly => true%>
-				        	</div>
-				        	<div class="chat_<%=comment.id%>">
-				        	</div>
-				        <%end%>
-
-				    <%end%>
-
-				<%end%>
+		        <%end%>
 			</td>
 		  </tr>
 		</table>

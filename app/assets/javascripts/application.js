@@ -44,6 +44,7 @@ jQuery(document).ready(function() {
       window.location.reload();
     });
     source.addEventListener('phase5to6', function(e) {
+      $("#note_form").submit();
       window.location.reload();
     });
     source.addEventListener('phase6to0', function(e) {
@@ -54,6 +55,7 @@ jQuery(document).ready(function() {
       window.location.reload();
     });
     source.addEventListener('phase5to4', function(e) {
+      $("#note_form").submit();
       window.location.reload();
     });
     source.addEventListener('phase4to3', function(e) {

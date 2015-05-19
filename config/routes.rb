@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'assignments/studentreview/:assignment/:user' => 'assignments#studentreview'
   get 'assignments/adminreview/:assignment' => 'assignments#adminreview'
   get 'assignments/conversations/:id' => 'conversations#show'
+  get 'assignments/studentreview/:assignment/conversations/:id' => 'conversations#show'
 
 
   get 'browser' => 'browser#index'

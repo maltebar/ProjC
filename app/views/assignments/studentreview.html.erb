@@ -3,10 +3,13 @@
 <br>
 <h4><%=@assignment.description%></h4>
 <br>
-<%if Submission.where(user_id: current_user.id, assignment_id: @assignment.id).exists?%>
-    <% @my_submission = Submission.find(Submission.where(user_id: current_user.id, assignment_id: @assignment.id))%>
+
+<% @my_pair = Pair.find(User.find(@user.id).pairs.where(assignment_id: @assignment.id))%>
+<% @my_partner = User.find(@my_pair.users.where.not(id: @user.id))%>
+<%if Submission.where(user_id: @user.id, assignment_id: @assignment.id).exists?%>
+    <% @my_submission = Submission.find(Submission.where(user_id: @user.id, assignment_id: @assignment.id))%>
 <%else%>
-    <% @my_submission = Submission.create(user_id: current_user.id, assignment_id: @assignment.id)%>
+    <% @my_submission = Submission.create(user_id: @user.id, assignment_id: @assignment.id)%>
 <%end%>
 
 
@@ -26,10 +29,10 @@
               <td>
                 <%length = @my_submission.length%>
                 <%for i in 1..length%>
-                    <% if !current_user.admin?
+                    <% if !@user.admin?
                             @comment = Comment.where(submission_id: @my_submission.id, line_number: i)
                         end%>
-                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs show-conversation", "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs show-conversation", "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
                 <%end%>
               </td>
           </tr>

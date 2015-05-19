@@ -1,5 +1,19 @@
 
 var ready = function () {
+
+
+    $('.show-conversation').click(function (e) {
+        e.preventDefault();
+ 
+        var sender_id = $(this).data('sid');
+        var recipient_id = $(this).data('rip');
+        var comment_id = $(this).data('comid');
+ 
+        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, comment_id: comment_id }, function (data) {
+            chatBox.viewConversation(comment_id, data.conversation_id);
+        });
+    });
+
  
     /**
      * When the send message link on our home page is clicked

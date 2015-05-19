@@ -4,11 +4,15 @@
       <%= render @messages %>
   <% end %>
 </div>
-<div class="chatboxinput">
-  <%= form_for([@conversation, @message], url: conversation_messages_path(@conversation, @message, format: 'js'), html: {id: "conversation_form_#{@conversation.id}"}, remote: true,) do |f| %>
-      <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <% end %>
-</div>
+
+<% phase = @conversation.comment.submission.assignment.phase%>
+<% if phase < 5%>
+	<div class="chatboxinput">
+	  <%= form_for([@conversation, @message], url: conversation_messages_path(@conversation, @message, format: 'js'), html: {id: "conversation_form_#{@conversation.id}"}, remote: true,) do |f| %>
+	      <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
+	      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	  <% end %>
+	</div>
+<%end%>
  
 <%= subscribe_to conversation_path(@conversation) %>

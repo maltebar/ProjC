@@ -22,11 +22,11 @@
 		      	<%length = @partner_submission.length%>
 		      	<%for i in 1..length%>
 			      	<% if !current_user.admin?
-			      			@comment = Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i)
+			      			@comment = Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i, pair_id: @my_pair.id)
 			      			if @comment.empty?
-						        @comment = Comment.create(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i)
+						        @comment = Comment.create(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i, pair_id: @my_pair.id)
 						    else
-						    	@comment = Comment.find(Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i))
+						    	@comment = Comment.find(Comment.where(user_id: current_user.id, submission_id: @partner_submission.id, line_number: i, pair_id: @my_pair.id))
 						    end
 					    end%>
 

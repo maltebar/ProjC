@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: projc_production
-  username: projc
-  password: <%= ENV['PROJC_DATABASE_PASSWORD'] %>

@@ -8,7 +8,7 @@
 <% phase = @conversation.comment.submission.assignment.phase%>
 <% if phase < 5%>
 	<div class="chatboxinput">
-	  <%= form_for([@conversation, @message], url: conversation_messages_path(@conversation, @message, format: 'js'), html: {id: "conversation_form_#{@conversation.id}"}, remote: true,) do |f| %>
+	  <%= form_for([@conversation, @message], remote: true, html: {id: "conversation_form_#{@conversation.id}"}) do |f| %>
 	      <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
 	      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 	  <% end %>

@@ -14,20 +14,29 @@ To get to the PostgreSQL prompt:
 To start Faye server:
 rackup private_pub.ru -s puma -E production
 
-Directions for use on Red Hat Enterprise Linux server (norway):
+===Directions for use on Red Hat Enterprise Linux server (norway):
 
-To start/stop the postgres service:
+====To start/stop the postgres service:
+
 	sudo service postgresql-9.4 start
+
 	sudo service postgresql-9.4 stop
-To start the puma server for development:
+
+====To start the puma server for development:
+
 	sudo rails s -p 80
 
-To start the puma service for development in the background:
+====To start the puma service for development in the background:
+
 	sudo nohup rails s -p 80 &
 	
-To drop and create new database:
+====To drop and create new database:
+
 	rake db:drop
+
 	rake db:create
+
 	rake db:migrate
+
 	rake db:seed
 

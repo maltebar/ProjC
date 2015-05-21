@@ -1,0 +1,49 @@
+Writing PID to tmp/pids/thin.pid
+Using rack adapter
+Exiting!
+/Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/resolver.rb:328:in `block in verify_gemfile_dependencies_are_found!': Could not find gem 'mongrel (~> 1.1.5) ruby' in any of the gem sources listed in your Gemfile or installed on this machine. (Bundler::GemNotFound)
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/resolver.rb:307:in `each'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/resolver.rb:307:in `verify_gemfile_dependencies_are_found!'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/resolver.rb:199:in `start'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/resolver.rb:182:in `resolve'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/definition.rb:193:in `resolve'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/definition.rb:132:in `specs'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/definition.rb:177:in `specs_for'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/definition.rb:166:in `requested_specs'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/environment.rb:18:in `requested_specs'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/runtime.rb:13:in `setup'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler.rb:122:in `setup'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0@global/gems/bundler-1.9.4/lib/bundler/setup.rb:18:in `<top (required)>'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/Desktop/projc/config/boot.rb:4:in `<top (required)>'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/Desktop/projc/config/application.rb:1:in `<top (required)>'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/Desktop/projc/config/environment.rb:2:in `<top (required)>'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/.rvm/rubies/ruby-2.2.0/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/maltebar/Desktop/projc/config.ru:4:in `block in <main>'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/rack-1.6.0/lib/rack/builder.rb:55:in `instance_eval'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/rack-1.6.0/lib/rack/builder.rb:55:in `initialize'
+	from /Users/maltebar/Desktop/projc/config.ru:1:in `new'
+	from /Users/maltebar/Desktop/projc/config.ru:1:in `<main>'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:33:in `eval'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:33:in `load'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:42:in `for'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/thin/controllers/controller.rb:170:in `load_adapter'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/thin/controllers/controller.rb:74:in `start'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/thin/runner.rb:200:in `run_command'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/lib/thin/runner.rb:156:in `run!'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/gems/thin-1.6.3/bin/thin:6:in `<top (required)>'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/bin/thin:23:in `load'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/bin/thin:23:in `<main>'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/maltebar/.rvm/gems/ruby-2.2.0/bin/ruby_executable_hooks:15:in `<main>'
+Writing PID to tmp/pids/thin.pid
+Using rack adapter
+Thin web server (v1.6.3 codename Protein Powder)
+Maximum connections set to 1024
+Listening on 0.0.0.0:3000, CTRL+C to stop

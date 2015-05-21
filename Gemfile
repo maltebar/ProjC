@@ -7,7 +7,7 @@ gem 'devise', '~> 3.4.1'
 
 gem 'ahoy', '~> 0.1.4'
 
-gem 'puma'
+gem 'thin'
 
 gem 'pg'
 gem 'private_pub'

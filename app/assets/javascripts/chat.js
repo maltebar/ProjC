@@ -87,24 +87,23 @@ var ready = function () {
                         if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){
                             if(current.data('cid') != conversation_id) {
                                 $("#chatbox_" + current.data('cid')).css('display', 'none');
+                                $("#"+current.data('comid')).removeClass('closeChat').addClass('btn btn-default btn-xs start-conversation');
                             }
                         }
                     });
-                }
-                else{
-                    $("#chatbox_" + conversation_id).css('display', 'none');
                 }
                 $("#chatbox_" + conversation_id + " .chatboxtextarea").focus();
                 return;
             }
  
-            $(".chat_"+comment_id).append('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'"></div>');
+            $(".chat_"+comment_id).append('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'" data-comid="'+comment_id+'"></div>');
 
             $('.chatbox').each(function() {
                 var current = $(this);
                 if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){ 
                     if(current.data('cid') != conversation_id) {
                         $("#chatbox_" + current.data('cid')).css('display', 'none');
+                        $("#"+comment_id).removeClass('closeChat').addClass('btn btn-default btn-xs start-conversation');
                     }
                 }
             });

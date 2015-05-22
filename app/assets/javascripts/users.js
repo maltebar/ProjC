@@ -8,23 +8,15 @@ var ready = function () {
      * recipient_id
      */
 
-    $('.start-conversation').ready(function (e) {
  
-        var sender_id = $(this).data('sid');
-        var recipient_id = $(this).data('rip');
-        var comment_id = $(this).data('comid');
- 
-        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, comment_id: comment_id }, function (data) {
-            chatBox.chatWith(comment_id, data.conversation_id);
-        });
-    });
- 
-    $('.start-conversation').click(function (e) {
+    $(document).on('click', '.start-conversation', function (e) {
         e.preventDefault();
  
         var sender_id = $(this).data('sid');
         var recipient_id = $(this).data('rip');
         var comment_id = $(this).data('comid');
+
+        $(this).removeClass('btn btn-default btn-xs start-conversation').addClass('closeChat');
  
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, comment_id: comment_id }, function (data) {
             chatBox.chatWith(comment_id, data.conversation_id);
@@ -48,6 +40,8 @@ var ready = function () {
  
     $(document).on('click', '.closeChat', function (e) {
         e.preventDefault();
+
+        $(this).removeClass('closeChat').addClass('btn btn-default btn-xs start-conversation');
  
         var id = $(this).data('cid');
         chatBox.close(id);

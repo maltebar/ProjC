@@ -11,7 +11,7 @@ body {
   padding-top: 78px;
   padding-left: 80px;
   padding-right: 80px;
-  background: #ff0000 !important; //white
+  background: #ffffff !important; //white
 }
 
 .navbar-inverse { //changes colour of (originally black) header
@@ -167,6 +167,22 @@ input.previous_phase {
   font-size: 12px;
   line-height: 1.4;
   border-radius: 3px;
+}
+
+.closeChat {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.start-conversation {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-radius: 3px;
+  border: 1px solid black;
 }
 
 .notes {

@@ -98,7 +98,7 @@ var ready = function () {
                 return;
             }
  
-            $(".chat_"+comment_id).append('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'"></div>')
+            $(".chat_"+comment_id).append('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'"></div>');
 
             $('.chatbox').each(function() {
                 var current = $(this);

@@ -105,7 +105,7 @@ var ready = function () {
 
             $('.chatbox').each(function() {
                 var current = $(this);
-                if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){
+                if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){ 
                     if(current.data('cid') != conversation_id) {
                         $("#chatbox_" + current.data('cid')).css('display', 'none');
                     }

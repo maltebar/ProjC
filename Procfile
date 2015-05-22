@@ -1,0 +1,1 @@
+web: bundle exec puma -t 3:130

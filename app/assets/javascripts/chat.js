@@ -103,14 +103,7 @@ var ready = function () {
  
             $('<div id="chatbox_' + conversation_id + '" class="chatbox" data-cid="'+conversation_id+'"></div>').appendTo(".chat_"+comment_id);
 
-            $('.chatbox').each(function() {
-                var current = $(this);
-                if ($("#chatbox_" + current.data('cid')).css('display') != 'none'){ 
-                    if(current.data('cid') != conversation_id) {
-                        $("#chatbox_" + current.data('cid')).css('display', 'none');
-                    }
-                }
-            });
+
  
             $.get("conversations/" + conversation_id, function (data) {
                 $('#chatbox_' + conversation_id).html(data);

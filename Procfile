@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-faye: bundle exec rackup private_pub.ru -s puma -E production
+faye: rackup private_pub.ru -s puma -p $PORT -e $RACK_ENV

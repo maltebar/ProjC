@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-pubsub: bundle exec rackup ./private_pub.ru -s puma -E production
+pubsub: bundle exec puma start -p $PORT -R ./private_pub.ru

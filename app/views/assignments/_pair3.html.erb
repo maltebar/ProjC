@@ -1,4 +1,4 @@
-<h1 align="center">Pair 3</h1>
+<h1 align="center">Pair Discussion II</h1>
 <h3><%=@assignment.title%></h3>
 <h4><%=@assignment.description%></h4>
 <br>
@@ -41,6 +41,11 @@
 			        		</div>
 			        	<%end%>
 			    <%end%>
+			  </td>
+			  <td>
+			  	<%if @my_partner.name == "No Partner"%>
+			  		<h3 align="center">&nbsp;&nbsp;&nbsp;You do not have a partner. There are an odd number of people in class today.</h3>
+			  	<%end%>
 			  </td>
 		  </tr>
 		</table>

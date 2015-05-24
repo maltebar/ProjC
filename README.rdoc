@@ -43,4 +43,7 @@ rackup private_pub.ru -s puma -E production
 ====To start server on norway:
 	
 	bundle exec puma -C config/puma.rb
+
+====Precompile
+	rake assets:precompile RAILS_ENV=production
 	

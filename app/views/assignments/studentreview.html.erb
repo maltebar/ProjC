@@ -40,7 +40,7 @@
                     <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
               <%end%>
             <%else%>
-              <div></div>
+              <div>&nbsp;&nbsp;&nbsp;</div>
             <%end%>
           <%end%>
           </tr>
@@ -65,6 +65,9 @@
 
                     <%end%>
 
+                <%end%>
+                <%if @comments.empty?%>
+                  <h3 align="center">There were no comments on your submission.</h3>
                 <%end%>
             </td>
           </tr>

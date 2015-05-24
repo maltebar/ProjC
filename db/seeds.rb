@@ -15,7 +15,7 @@ User.create(name: 'Sally Sue', email: 'sallysue@brandeis.edu', password: '123456
 User.create(name: 'Lola Lou', email: 'lolalou@brandeis.edu', password: '12345678', admin: 'false') #id6
 User.create(name: 'Betty Bee', email: 'bettybee@brandeis.edu', password: '12345678', admin: 'false') #id7
 User.create(name: 'John Jo', email: 'johnjo@brandeis.edu', password: '12345678', admin: 'false') #id8
-User.create(name: 'Ghost', email: 'ghost@brandeis.edu', password: '12345678', admin: 'false')
+User.create(name: 'No Partner', email: 'ghost@brandeis.edu', password: '12345678', admin: 'false')
 
 
 Assignment.create(title: 'Assignment 1', description: 'Find the max value of a 2D array', pretest: 'Tell me about arrays.', posttest: 'What did you learn about arrays?', complete: true, active: false, solution: 'This is the answer for the max 2D array.')

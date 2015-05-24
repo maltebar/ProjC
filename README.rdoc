@@ -40,3 +40,7 @@ rackup private_pub.ru -s puma -E production
 
 	rake db:seed
 
+====To start server on norway:
+	
+	bundle exec puma -C config/puma.rb
+	

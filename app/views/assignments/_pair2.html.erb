@@ -11,6 +11,11 @@
 
 <table>
 	<td>
+		<%if @current_partner == current_user%>
+			<strong>Your Code</strong>
+		<%else%>
+			<strong>Your Partner's Code</strong>
+		<%end%>
 		<div class="field">
 			<div id="editor1" style="height: 450px; width: 570px"><%= @current_partner_submission.content%></div>
 			<br><br>
@@ -18,6 +23,7 @@
 	</td>
 
 	<td valign="top">
+		<strong>&nbsp;</strong>
 		<table>
 		   <tr>
 		      <td>
@@ -51,6 +57,7 @@
 	</td>
 
 	<td valign="top">
+		<strong>Discussion</strong>
 		<table>
 		   <tr>
 		      <td>

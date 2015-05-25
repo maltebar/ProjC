@@ -4,6 +4,6 @@ module MessagesHelper
 	end
 
 	def message_interlocutor(message)
-		message.user == message.conversation.sender ? "Partner" : "Me"
+		message.user == message.conversation.sender ? "User 1" : "User 2"
 	end
 end

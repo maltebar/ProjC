@@ -52,6 +52,9 @@ class AssignmentsController < ApplicationController
   def forward_phase
     @assignment = Assignment.find(params[:id])
     current_phase = @assignment.phase
+    if current_phase == 1
+      make_random_pairs
+    end
     if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
     else
@@ -63,9 +66,7 @@ class AssignmentsController < ApplicationController
     end
 
     @assignment.save
-    if current_phase == 1
-      make_random_pairs
-    end
+
     respond_with(@assignment)
   end
 

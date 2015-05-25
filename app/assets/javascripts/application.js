@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
       var length = editor1.session.getLength();
       $("#length_field").val(length);
       $("#content_field").val(code);
-      $("#submission_form").submit();
+      $("#submission_form").submit().delay(500);
     });
     source.addEventListener('phase2to3', function(e) {
       $("#comment_form").submit();

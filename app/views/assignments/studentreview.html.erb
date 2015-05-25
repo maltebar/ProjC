@@ -34,10 +34,10 @@
                   @comment = Comment.where(submission_id: @my_submission.id, line_number: i)
               end%>
             <%if @comment.exists? && !@my_pair.nil?%>
-              <% if Conversation.between(current_user.id, @my_partner.id, @comment.first.id).present?%>
-                <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(current_user.id,@my_partner.id,@comment.first.id).first.id%></div>
+              <% if Conversation.between(@user.id, @my_partner.id, @comment.first.id).present?%>
+                <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(@user.id,@my_partner.id,@comment.first.id).first.id%></div>
               <%else%>
-                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
               <%end%>
             <%else%>
               <div>&nbsp;&nbsp;&nbsp;</div>

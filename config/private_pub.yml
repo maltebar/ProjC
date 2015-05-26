@@ -1,10 +1,12 @@
 development:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: "http://norway.cs-i.brandeis.edu:8080/faye"
+  secret_token: "cc21f841f77268133986a34012aed6b346755bbca0eb06cd028389816c11ded0"
+  signature_expiration: 3600 # one hour
 test:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: "http://norway.cs-i.brandeis.edu:8080/faye"
+  secret_token: "cc21f841f77268133986a34012aed6b346755bbca0eb06cd028389816c11ded0"
+  signature_expiration: 3600 # one hour
 production:
-  server: "http://norway.cs-i.brandeis.edu/faye"
+  server: "http://norway.cs-i.brandeis.edu:8080/faye"
   secret_token: "cc21f841f77268133986a34012aed6b346755bbca0eb06cd028389816c11ded0"
   signature_expiration: 3600 # one hour

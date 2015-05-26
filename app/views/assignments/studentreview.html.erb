@@ -17,6 +17,7 @@
 
 
 <table>
+  <tr>
     <td>
         <div class="field">
             <div id="editor1" style="height: 450px; width: 525px"><%= @my_submission.content%></div>
@@ -27,21 +28,20 @@
     <td valign="top">
         <table>
            <tr>
-              <td>
             <%length = @my_submission.length%>
             <%for i in 1..length%>
-              <% if !@user.admin?
+              <%if !@user.admin?
                   @comment = Comment.where(submission_id: @my_submission.id, line_number: i)
               end%>
             <%if @comment.exists? && !@my_pair.nil?%>
-                  <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
-                <%elsif !@comment.exists?%>
-                  <div></div>
-                <%else%>
-                  <div id="zoom", style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
-                      ϟ 
-                  </div>
-                <%end%>
+              <% if Conversation.between(@user.id, @my_partner.id, @comment.first.id).present?%>
+                <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(@user.id,@my_partner.id,@comment.first.id).first.id%></div>
+              <%else%>
+                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+              <%end%>
+            <%else%>
+              <div>&nbsp;&nbsp;&nbsp;</div>
+            <%end%>
           <%end%>
           </tr>
         </table>
@@ -66,10 +66,40 @@
                     <%end%>
 
                 <%end%>
+                <%if @comments.empty?%>
+                  <h3 align="center">There were no comments on your submission.</h3>
+                <%end%>
             </td>
           </tr>
         </table>
     </td>
+  </tr>
+
+  <tr>
+    <td>
+        <div class="field">
+            <div id="editor2" style="height: 450px; width: 525px"><%= @assignment.solution%></div>
+            <br><br>
+        </div>
+    </td>
+    <td>
+      <div></div>
+    </td>
+    <td valign="top">
+      <%if Note.where(submission_id: @my_submission.id).exists?%>
+              <% @my_notes = Note.find(Note.where(submission_id: @my_submission.id))%>
+            <%else%>
+              <% @my_notes = Note.create(submission_id: @my_submission.id, content: "You did not take any notes.")%>
+      <%end%>
+      <%=form_for(@my_notes) do |f|%>
+              <div>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <%= f.text_area :content, :class => "notes", :readonly => true%>
+              </div>
+      <%end%>
+    </td>
+  </tr>
+
 
 
 </table>
@@ -88,6 +118,15 @@
     fontSize: "11pt"
   });
   editor1.setReadOnly(true);
+
+
+  var editor2 = ace.edit("editor2");
+  editor2.setTheme("ace/theme/twilight");
+  editor2.getSession().setMode("ace/mode/java");
+  editor2.setOptions({
+    fontSize: "11pt"
+  });
+  editor2.setReadOnly(true);
     
 </script>
 

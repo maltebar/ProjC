@@ -1,4 +1,4 @@
-<h1 align="center">Pair 2</h1>
+<h1 align="center">Pair Discussion I</h1>
 <h3><%=@assignment.title%></h3>
 <h4><%=@assignment.description%></h4>
 <br>
@@ -11,6 +11,11 @@
 
 <table>
 	<td>
+		<%if @current_partner == current_user%>
+			<strong>Your Code</strong>
+		<%else%>
+			<strong>Your Partner's Code</strong>
+		<%end%>
 		<div class="field">
 			<div id="editor1" style="height: 450px; width: 570px"><%= @current_partner_submission.content%></div>
 			<br><br>
@@ -18,16 +23,21 @@
 	</td>
 
 	<td valign="top">
+		<strong>&nbsp;</strong>
 		<table>
 		   <tr>
 		      <td>
 		      	<%length = @current_partner_submission.length%>
 		      	<%for i in 1..length%>
-			      	<% if !current_user.admin?
+		      			<% if !current_user.admin?
 			      			@comment = Comment.where(submission_id: @current_partner_submission.id, line_number: i)
 					    end%>
 						<%if current_user == @current_partner && @comment.exists?%>
-			         		<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+							<% if Conversation.between(current_user.id, @my_partner.id, @comment.first.id).present?%>
+								<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(current_user.id,@my_partner.id,@comment.first.id).first.id%></div>
+			         		<%else%>
+			         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
+			         		<%end%>
 			         	<%elsif !@comment.exists?%>
 			         		<div></div>
 			         	<%else%>
@@ -37,11 +47,17 @@
 			        	<%end%>
 			    <%end%>
 			  </td>
+			  <td>
+			  	<%if @my_partner.name == "No Partner"%>
+			  		<h3 align="center">&nbsp;&nbsp;&nbsp;You do not have a partner. There are an odd number of people in class today.</h3>
+			  	<%end%>
+			  </td>
 		  </tr>
 		</table>
 	</td>
 
 	<td valign="top">
+		<strong>Discussion</strong>
 		<table>
 		   <tr>
 		      <td>

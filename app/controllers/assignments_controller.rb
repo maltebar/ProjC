@@ -11,7 +11,7 @@ class AssignmentsController < ApplicationController
 
   def adminreview
     @assignment = Assignment.find(params[:assignment])
-    @users = User.where.not(admin: true, name:"Ghost")
+    @users = User.where.not(admin: true, name:"No Partner")
   end
 
 
@@ -52,6 +52,9 @@ class AssignmentsController < ApplicationController
   def forward_phase
     @assignment = Assignment.find(params[:id])
     current_phase = @assignment.phase
+    if current_phase == 1
+      make_random_pairs
+    end
     if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
     else
@@ -63,9 +66,7 @@ class AssignmentsController < ApplicationController
     end
 
     @assignment.save
-    if current_phase == 1
-      make_random_pairs
-    end
+
     respond_with(@assignment)
   end
 
@@ -73,7 +74,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @users = User.where.not(admin:true)
     @valid_users = []
-    @dummy = User.find(User.where(name:'Ghost'))
+    @dummy = User.find(User.where(name:'No Partner'))
     @users.each do |user|
       if Submission.where(assignment_id: @assignment.id, user_id: user.id).exists?
         @valid_users << user
@@ -92,7 +93,7 @@ class AssignmentsController < ApplicationController
       if Submission.where(assignment_id: @assignment.id, user_id: @dummy.id).exists?
         @submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @dummy.id))
       else
-        @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id)
+        @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id, content: "You do not have a partner. There are an odd number of students in class today.")
       end
       @pair.users << @dummy
       @pair.update(partner_2: @dummy.id)

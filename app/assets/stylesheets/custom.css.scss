@@ -21,6 +21,10 @@ body {
     background-image: none !important;
 }
 
+.navbar-brand {
+  font-size: 160%;
+}
+
 //changes colour of "logged in as: "
 a.navbar-nickname {
   color: #ffffff !important; //hover colour

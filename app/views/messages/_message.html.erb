@@ -1,5 +1,11 @@
 <li class="<%=  self_or_other(message) %>">
-  <div class="chatboxmessagecontent">
-    <p><%= message.body %></p>
-  </div>
+	<%if message_interlocutor(message) == 'User 1'%>
+		<div class="chatboxmessagecontent" style="background-color:#8DE979">
+    		<p><%= message.body %></p>
+    	</div>
+    <%else%>
+		<div class="chatboxmessagecontent">
+			<p><%= message.body %></p>
+		</div>
+	<%end%>
 </li>

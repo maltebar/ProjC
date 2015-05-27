@@ -192,7 +192,9 @@ input.previous_phase {
 .notes {
   color: #000000 !important;
   border: 5px solid #000000 !important;
-  height: 450px;
+  padding: 5px;
+  font-size: 12.5px;
+  line-height: 1.6;
   width: 675px;
   resize: none;
 }

@@ -28,10 +28,12 @@
 		      	<%else%>
 		      		<% @my_notes = Note.create(submission_id: @my_submission.id)%>
 		      	<%end%>
+		      	<% length = @my_submission.length%>
+		      	<% final_length = [length*20, 25*20].max%>
 		      	<%=form_for(@my_notes, remote: true, html: {id: "note_form"}) do |f|%>
       				<div>
 		    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-			            <%= f.text_area :content, :class => "notes"%>
+			            <%= f.text_area :content, :class => "notes", :rows => [length-1, 25-1].max%>
 		        	</div>
 		        <%end%>
 			</td>
@@ -54,6 +56,12 @@
   editor1.getSession().setMode("ace/mode/java");
   editor1.setOptions({
     fontSize: "11pt"
+  });
+  editor1.setOptions({
+    maxLines: Infinity
+  });
+  editor1.setOptions({
+    minLines: 25
   });
   editor1.setReadOnly(true);
     

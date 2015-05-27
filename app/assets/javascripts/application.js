@@ -23,7 +23,9 @@ jQuery(document).ready(function() {
     var source = new EventSource('/browser');
     source.addEventListener('phase0to1', function(e) {
       $("#submission_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase1to2', function(e) {
       var editor1 = ace.edit("editor1");
@@ -32,10 +34,15 @@ jQuery(document).ready(function() {
       $("#length_field").val(length);
       $("#content_field").val(code);
       $("#submission_form").submit();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase2to3', function(e) {
       $("#comment_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase3to4', function(e) {
       window.location.reload();
@@ -45,7 +52,9 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase5to6', function(e) {
       $("#note_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase6to0', function(e) {
       $("#submission_form").submit();
@@ -53,11 +62,15 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase6to5', function(e) {
       $("#submission_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase5to4', function(e) {
       $("#note_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase4to3', function(e) {
       window.location.reload();
@@ -67,7 +80,9 @@ jQuery(document).ready(function() {
     });
     source.addEventListener('phase2to1', function(e) {
       $("#comment_form").submit();
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
     source.addEventListener('phase1to0', function(e) {
       var editor1 = ace.edit("editor1");
@@ -76,6 +91,9 @@ jQuery(document).ready(function() {
       $("#length_field").val(length);
       $("#content_field").val(code);
       $("#submission_form").submit();
+      setTimeout(function() {
+        window.location.reload(true);}
+        ,500);
     });
   }, 1);
 });

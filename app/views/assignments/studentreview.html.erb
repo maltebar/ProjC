@@ -94,7 +94,7 @@
       <%=form_for(@my_notes) do |f|%>
               <div>
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <%= f.text_area :content, :class => "notes", :readonly => true%>
+                  <%= f.text_area :content, :class => "notes", :readonly => true, :rows => 24%>
               </div>
       <%end%>
     </td>
@@ -117,6 +117,12 @@
   editor1.setOptions({
     fontSize: "11pt"
   });
+  editor1.setOptions({
+    maxLines: Infinity
+  });
+  editor1.setOptions({
+    minLines: 25
+  });
   editor1.setReadOnly(true);
 
 
@@ -125,6 +131,12 @@
   editor2.getSession().setMode("ace/mode/java");
   editor2.setOptions({
     fontSize: "11pt"
+  });
+  editor2.setOptions({
+    maxLines: Infinity
+  });
+  editor2.setOptions({
+    minLines: 25
   });
   editor2.setReadOnly(true);
     

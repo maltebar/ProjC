@@ -3,8 +3,8 @@ class CreateAssignments < ActiveRecord::Migration
     create_table :assignments do |t|
     	t.string :title
     	t.text :description
-    	t.boolean :complete
-    	t.boolean :active
+    	t.boolean :complete, default: false
+    	t.boolean :active, default: false
     	t.text :solution
       t.integer :phase, default: 0
       t.text :pretest

@@ -16,8 +16,8 @@ class AssignmentsController < ApplicationController
 
 
   def index
-    @assignments = Assignment.all.order('complete')
-    @student_assignments = Assignment.where("complete = ? or active = ?", true, true).order('complete')
+    @assignments = Assignment.order('complete ASC')
+    @student_assignments = Assignment.where("complete = ? or active = ?", true, true).order('complete ASC')
     respond_with(@assignments)
   end
 

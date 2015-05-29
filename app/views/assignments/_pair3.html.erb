@@ -48,11 +48,6 @@
 			        	<%end%>
 			    <%end%>
 			  </td>
-			  <td>
-			  	<%if @my_partner.name == "No Partner"%>
-			  		<h3 align="center">&nbsp;&nbsp;&nbsp;You do not have a partner. There are an odd number of people in class today.</h3>
-			  	<%end%>
-			  </td>
 		  </tr>
 		</table>
 	</td>
@@ -77,6 +72,11 @@
 				    <%end%>
 
 				<%end%>
+			</td>
+			<td>
+			  	<%if @my_partner.name == "No Partner"%>
+			  		<h3 align="center">&nbsp;&nbsp;&nbsp;You do not have a partner. There are an odd number of students in class today.</h3>
+			  	<%end%>
 			</td>
 		  </tr>
 		</table>

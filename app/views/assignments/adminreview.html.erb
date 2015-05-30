@@ -24,12 +24,15 @@
         <% @my_partner = User.find(@my_pair.users.where.not(id: user.id))%>
       <%end%>
 
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td>
           <%if !@my_partner.nil?%> 
             <%= @my_partner.name %>
+            <% @my_partner = nil %>
+          <%else%>
+            <div>No Partner</div>
           <%end%>
         </td>
         <td>

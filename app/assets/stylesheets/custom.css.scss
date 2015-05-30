@@ -34,8 +34,18 @@ a.navbar-nickname {
   } 
 }
 
+.header_links {
+  color: #44C028 !important; 
+
+  &:hover { //hover of main header words (i.e. Java Programming...)
+    color: #CACACA !important; //hover of main header words
+    background-color: transparent !important;
+    text-decoration: none;
+  } 
+}
+
 a{
-  color: #4CD62D !important; 
+  color: #44C028!important; 
 
   &:hover { //hover of main header words (i.e. Java Programming...)
     color: #CACACA !important; //hover of main header words
@@ -70,7 +80,7 @@ h1 {
 }
 
 h3 {
-  color: #4CD62D !important;
+  color: #44C028 !important;
 }
 
 h4 {

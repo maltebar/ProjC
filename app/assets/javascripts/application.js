@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
       $("#submission_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase1to2', function(e) {
       var editor1 = ace.edit("editor1");
@@ -36,13 +36,13 @@ jQuery(document).ready(function() {
       $("#submission_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase2to3', function(e) {
       $("#comment_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase3to4', function(e) {
       window.location.reload();
@@ -54,7 +54,7 @@ jQuery(document).ready(function() {
       $("#note_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase6to0', function(e) {
       $("#submission_form").submit();
@@ -64,13 +64,13 @@ jQuery(document).ready(function() {
       $("#submission_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase5to4', function(e) {
       $("#note_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase4to3', function(e) {
       window.location.reload();
@@ -82,7 +82,7 @@ jQuery(document).ready(function() {
       $("#comment_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
     source.addEventListener('phase1to0', function(e) {
       var editor1 = ace.edit("editor1");
@@ -93,7 +93,7 @@ jQuery(document).ready(function() {
       $("#submission_form").submit();
       setTimeout(function() {
         window.location.reload(true);}
-        ,500);
+        ,1000);
     });
   }, 1);
 });

@@ -15,6 +15,7 @@ default: &default
   username: admin
   password: password
   host: 127.0.0.1
+  pool: 125
 
 development:
   <<: *default

@@ -36,11 +36,7 @@
                   @comment = Comment.where(submission_id: @my_submission.id, line_number: i)
               end%>
             <%if @comment.exists? && !@my_pair.nil?%>
-              <% if Conversation.between(@user.id, @my_partner.id, @comment.first.id).present?%>
-                <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(@user.id,@my_partner.id,@comment.first.id).first.id%></div>
-              <%else%>
-                    <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => @user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
-              <%end%>
+                  <div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => ""%></div>
             <%else%>
               <div>&nbsp;&nbsp;&nbsp;</div>
             <%end%>
@@ -54,7 +50,7 @@
         <table>
            <tr>
               <td>
-                <% @comments = Comment.where(submission_id: @my_submission.id).order('line_number ASC')%>
+                <% @comments = Comment.where("submission_id = ? and line_number != ?", @my_submission.id, 0).order('line_number ASC')%>
                 <%=form_for(@my_submission, remote: true, html: {id: "comment_form"}) do |f|%>
                     <%@comments.each do |comment|%>
                         <%=f.fields_for :comments, comment do |c|%>

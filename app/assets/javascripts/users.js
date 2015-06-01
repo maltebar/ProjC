@@ -11,6 +11,7 @@ var ready = function () {
  
     $(document).on('click', '.start-conversation', function (e) {
         e.preventDefault();
+        var button = $(this);
  
         var sender_id = $(this).data('sid');
         var recipient_id = $(this).data('rip');
@@ -20,6 +21,7 @@ var ready = function () {
  
         $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id, comment_id: comment_id }, function (data) {
             chatBox.chatWith(comment_id, data.conversation_id);
+            button.attr('data-cid', data.conversation_id);
         });
     });
  

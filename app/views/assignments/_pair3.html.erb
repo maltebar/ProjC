@@ -1,4 +1,4 @@
-<h1 align="center">Pair Discussion II</h1>
+<h1 align="center">Pair Discussion I</h1>
 <h3><%=@assignment.title%></h3>
 <h4><%=@assignment.description%></h4>
 
@@ -8,66 +8,59 @@
 <% @current_partner = User.find(@my_pair.partner_2)%>
 <% @current_partner_submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @current_partner.id))%>
 
-<table style="margin-left: 15cm;">
-	<td valign="top">
-		<table>
-		   <tr>
-		      <td>
-		      	<% if !current_user.admin?
-		      		if Comment.where(submission_id: @current_partner_submission.id, line_number: 0).exists?
-		      			@comment = Comment.where(submission_id: @current_partner_submission.id, line_number: 0)
-		      		else
-		      			@comment = Comment.create(submission_id: @current_partner_submission.id, line_number: 0, content: "Ping your partner. (Only use this chat to check if the connection is alive!)")
-		      		end
-				   end%>
-					<%if current_user != @current_partner && @comment.exists?%>
-						<% if Conversation.between(current_user.id, @my_partner.id, @comment.first.id).present?%>
-							<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(current_user.id,@my_partner.id,@comment.first.id).first.id%></div>
-		         		<%else%>
-		         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
-		         		<%end%>
-		         	<%elsif !@comment.exists?%>
-		         		<div></div>
-		         	<%else%>
-		         		<div id="zoom", style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
-		             		ϟ 
-		        		</div>
-		        	<%end%>
-			  </td>
-		  </tr>
-		</table>
+<%if @my_partner.name != "No Partner"%>
+	<table style="margin-left: 15cm;">
+		<td valign="top">
+			<table>
+			   <tr>
+			      <td>
+			      	<% if !current_user.admin?
+			      		if Comment.where(submission_id: @current_partner_submission.id, line_number: 0).exists?
+			      			@comment = Comment.find(Comment.where(submission_id: @current_partner_submission.id, line_number: 0))
+			      		else
+			      			@comment = Comment.create(submission_id: @current_partner_submission.id, line_number: 0, content: "General Chat (Should not be used to discuss code.)")
+			      		end
+					   end%>
+						<%if current_user != @current_partner%>
+			         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.id, "data-cid" => ""%></div>
+			         	<%else%>
+			         		<div id="zoom", style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
+			             		ϟ 
+			        		</div>
+			        	<%end%>
+				  </td>
+			  </tr>
+			</table>
 
-	</td>
+		</td>
 
-	<td valign="top">
-		<table>
-		   <tr>
-		      <td>
-			    <% @comments = Comment.where(submission_id: @current_partner_submission.id, line_number: 0) %>
-			    <%=form_for(@current_partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
-			    	<%@comments.each do |comment|%>
-			    		<%=f.fields_for :comments, comment do |c|%>
-			    			<div>
-				    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-					            <%= c.text_field :content, :size=>"81", :class => "lightning", :readonly => true%>
-				        	</div>
-				        	<div class="chat_<%=comment.id%>">
-				        	</div>
-				        <%end%>
+		<td valign="top">
+			<table>
+			   <tr>
+			      <td>
+				    <% @comments = Comment.where(submission_id: @current_partner_submission.id, line_number: 0) %>
+				    <%=form_for(@current_partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
+				    	<%@comments.each do |comment|%>
+				    		<%=f.fields_for :comments, comment do |c|%>
+				    			<div>
+					    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+						            <%= c.text_field :content, :size=>"81", :class => "lightning", :readonly => true%>
+					        	</div>
+					        	<div class="chat_<%=comment.id%>">
+					        	</div>
+					        <%end%>
 
-				    <%end%>
+					    <%end%>
 
-				<%end%>
-			</td>
-			<td>
-			  	<%if @my_partner.name == "No Partner"%>
-			  		<h3 align="center">&nbsp;&nbsp;&nbsp;You do not have a partner. There are an odd number of students in class today.</h3>
-			  	<%end%>
-			</td>
-		  </tr>
-		</table>
-	</td>
-</table>
+					<%end%>
+				</td>
+			  </tr>
+			</table>
+		</td>
+	</table>
+<%end%>
+
+
 <br><br>
 <table>
 	<td>
@@ -93,11 +86,7 @@
 			      			@comment = Comment.where(submission_id: @current_partner_submission.id, line_number: i)
 					    end%>
 						<%if current_user == @current_partner && @comment.exists?%>
-							<% if Conversation.between(current_user.id, @my_partner.id, @comment.first.id).present?%>
-								<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => Conversation.between(current_user.id,@my_partner.id,@comment.first.id).first.id%></div>
-			         		<%else%>
-			         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id%></div>
-			         		<%end%>
+		         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.first.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.first.id, "data-cid" => ""%></div>
 			         	<%elsif !@comment.exists?%>
 			         		<div></div>
 			         	<%else%>

@@ -43,12 +43,12 @@
 	</td>
 
 	<td valign="top">
-		<strong>Your Comments<strong>
+		<strong>Your Comments</strong>
 		<br>
 		<table>
 		   <tr>
 		      <td>
-			    <% @comments = Comment.where(submission_id: @partner_submission.id).order('line_number ASC')%>
+			    <% @comments = Comment.where("submission_id = ? and line_number != ?", @partner_submission.id, 0).order('line_number ASC')%>
 			    <%=form_for(@partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
 			    	<%@comments.each do |comment|%>
 			    		<%=f.fields_for :comments, comment do |c|%>

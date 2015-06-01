@@ -93,7 +93,7 @@ class AssignmentsController < ApplicationController
       if Submission.where(assignment_id: @assignment.id, user_id: @dummy.id).exists?
         @submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @dummy.id))
       else
-        @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id, content: "You do not have a partner. There are an odd number of students in class today.")
+        @submission = Submission.create(user_id: @dummy.id, assignment_id: @assignment.id, content: "You do not have a partner.\nThere are an odd number of students in class today.")
       end
       @pair.users << @dummy
       @pair.update(partner_2: @dummy.id)

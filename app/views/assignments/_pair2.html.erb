@@ -8,60 +8,7 @@
 <% @current_partner = User.find(@my_pair.partner_1)%>
 <% @current_partner_submission = Submission.find(Submission.where(assignment_id: @assignment.id, user_id: @current_partner.id))%>
 
-<%if @my_partner.name != "No Partner"%>
-	<table style="margin-left: 15cm;">
-		<td valign="top">
-			<table>
-			   <tr>
-			      <td>
-			      	<% if !current_user.admin?
-			      		if Comment.where(submission_id: @current_partner_submission.id, line_number: 0).exists?
-			      			@comment = Comment.find(Comment.where(submission_id: @current_partner_submission.id, line_number: 0))
-			      		else
-			      			@comment = Comment.create(submission_id: @current_partner_submission.id, line_number: 0, content: "General Chat (Should not be used to discuss code.)")
-			      		end
-					   end%>
-						<%if current_user != @current_partner%>
-			         			<div><%= link_to "+", "#", class: "btn btn-default btn-xs start-conversation", id: @comment.id, "data-sid" => current_user.id, "data-rip" => @my_partner.id , "data-comid" => @comment.id, "data-cid" => ""%></div>
-			         	<%else%>
-			         		<div id="zoom", style="border: 1px solid black; background-color: #ffffff; padding: 0px; padding-right: 5px; padding-left: 5px;" >
-			             		ϟ 
-			        		</div>
-			        	<%end%>
-				  </td>
-			  </tr>
-			</table>
 
-		</td>
-
-		<td valign="top">
-			<table>
-			   <tr>
-			      <td>
-				    <% @comments = Comment.where(submission_id: @current_partner_submission.id, line_number: 0) %>
-				    <%=form_for(@current_partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
-				    	<%@comments.each do |comment|%>
-				    		<%=f.fields_for :comments, comment do |c|%>
-				    			<div>
-					    			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-						            <%= c.text_field :content, :size=>"81", :class => "lightning", :readonly => true%>
-					        	</div>
-					        	<div class="chat_<%=comment.id%>">
-					        	</div>
-					        <%end%>
-
-					    <%end%>
-
-					<%end%>
-				</td>
-			  </tr>
-			</table>
-		</td>
-	</table>
-<%end%>
-
-
-<br><br>
 <table>
 	<td>
 		<%if @current_partner == current_user%>
@@ -105,7 +52,7 @@
 		<table>
 		   <tr>
 		      <td>
-			    <% @comments = Comment.where("submission_id = ? and line_number != ?", @current_partner_submission.id, 0).order('line_number ASC')%>
+			    <% @comments = Comment.where(submission_id: @current_partner_submission.id).order('line_number ASC')%>
 			    <%=form_for(@current_partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
 			    	<%@comments.each do |comment|%>
 			    		<%=f.fields_for :comments, comment do |c|%>

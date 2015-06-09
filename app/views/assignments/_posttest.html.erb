@@ -1,6 +1,6 @@
 <h1 align="center">Post-test</h1>
 <h3><%=@assignment.title%></h3>
-<h4><%=@assignment.posttest%></h4>
+<h4><%=safe_join(@assignment.posttest.split("\r\n"), "<br />".html_safe)%></h4>
 <br><br>
 
 <%=form_for(@submission, remote: true, html: {id: "submission_form"}) do |f|%>

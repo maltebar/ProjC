@@ -1,6 +1,6 @@
 <h1 align="center">Coding Time</h1>
 <h3><%=@assignment.title%></h3>
-<h4><%=@assignment.description%></h4>
+<h4><%=safe_join(@assignment.description.split("\r\n"), "<br />".html_safe)%></h4>
 <br>
 
 <strong>Your Code<strong>

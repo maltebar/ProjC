@@ -42,7 +42,7 @@ class Assignment < ActiveRecord::Base
 	    self.class.connection.raw_connection.wait_for_notify do |event, pid, phase_difference|
 	      yield phase_difference
 	      self.class.connection.execute "UNLISTEN #{channel}"
-	      self.class.connection.release_connection
+	      self.class.connection.disconnect!
 	    end
 	  end
 	ensure
@@ -51,6 +51,6 @@ class Assignment < ActiveRecord::Base
 
 	private
 	def channel
-	  "assignments_#{id}"
+	  "assignments_#{self.id}"
 	end
 end

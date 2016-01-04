@@ -12,7 +12,7 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  username: projc
+  username: admin
   password: password
   host: 127.0.0.1
   pool: 125

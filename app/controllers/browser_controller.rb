@@ -16,9 +16,6 @@ class BrowserController < ApplicationController
           sse.write('hello', :event => r)
         end
            
-          
-       rescue IOError
-         # When the client disconnects, we'll get an IOError on write
        ensure
          sse.close
        end

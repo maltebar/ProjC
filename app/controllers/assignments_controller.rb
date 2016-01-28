@@ -57,8 +57,10 @@ class AssignmentsController < ApplicationController
     end
     if current_phase + 1 < 7
       @assignment.phase = current_phase + 1
+      PrivatePub.publish_to("/phasechange", oldphase: current_phase, currentphase: @assignment.phase)
     else
       @assignment.update(active: false, complete: true, phase: 0)
+      PrivatePub.publish_to("/phasechange", oldphase: current_phase, currentphase: @assignment.phase)
       if current_user.admin?
         redirect_to root_path
         return
@@ -116,8 +118,10 @@ class AssignmentsController < ApplicationController
     current_phase = @assignment.phase
     if current_phase - 1 > 0
       @assignment.phase = current_phase - 1
+      PrivatePub.publish_to("/phasechange", oldphase: current_phase, currentphase: @assignment.phase)
     else
       @assignment.phase = 0
+      PrivatePub.publish_to("/phasechange", oldphase: current_phase, currentphase: @assignment.phase)
     end
     if current_phase == 2
       @pairs = Pair.where(assignment_id: @assignment.id)

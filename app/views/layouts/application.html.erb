@@ -67,6 +67,19 @@
 
           });
       </script>
+      <script type="text/javascript">
+
+        channel = "/phasechange"
+        PrivatePub.subscribe(channel, function(data) {
+
+          var oldphase = data.oldphase
+          var currentphase = data.currentphase
+          changePhase.change(oldphase, currentphase);
+
+        });
+      </script>
+
+      <%= subscribe_to "/phasechange"%>
       <%= subscribe_to "/notifications" + current_user.id.to_s %>
     <% end %>
 

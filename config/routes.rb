@@ -46,9 +46,6 @@ Rails.application.routes.draw do
   get 'assignments/conversations/:id' => 'conversations#show'
   get 'assignments/studentreview/:assignment/conversations/:id' => 'conversations#show'
 
-
-  get 'browser' => 'browser#index'
-
   post 'assignments/forward_phase'
   post 'assignments/backward_phase'
 

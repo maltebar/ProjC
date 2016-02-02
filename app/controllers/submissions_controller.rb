@@ -20,7 +20,7 @@ class SubmissionsController < ApplicationController
 
   def new
     @submission = Submission.new
-    respond_with(@submission)
+    redirect_to :back
   end
 
   def edit
@@ -29,12 +29,12 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params)
     @submission.save
-    respond_with(@submission)
+    redirect_to :back
   end
 
   def update
     @submission.update(submission_params)
-    respond_with(@submission)
+    redirect_to :back
   end
 
   def destroy

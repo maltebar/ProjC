@@ -6,7 +6,6 @@ var ready = function () {
         change: function(oldphase, currentphase) {
             if(oldphase == 0 && currentphase == 1){
                 $("#submission_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 1 && currentphase == 2){
                 var editor1 = ace.edit("editor1");
@@ -15,11 +14,9 @@ var ready = function () {
                 $("#length_field").val(length);
                 $("#content_field").val(code);
                 $("#submission_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 2 && currentphase == 3){
                 $("#comment_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 3 && currentphase == 4){
                 window.location.reload();
@@ -29,7 +26,6 @@ var ready = function () {
             }
             else if(oldphase == 5 && currentphase == 6){
                 $("#note_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 6 && currentphase == 0){
                 $("#submission_form").submit();
@@ -37,11 +33,9 @@ var ready = function () {
             }
             else if(oldphase == 6 && currentphase == 5){
                 $("#submission_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 5 && currentphase == 4){
                 $("#note_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 4 && currentphase == 3){
                 window.location.reload();
@@ -51,7 +45,6 @@ var ready = function () {
             }
             else if(oldphase == 2 && currentphase == 1){
                 $("#comment_form").submit();
-                window.location.reload();
             }
             else if(oldphase == 1 && currentphase == 0){
                 var editor1 = ace.edit("editor1");
@@ -60,7 +53,6 @@ var ready = function () {
                 $("#length_field").val(length);
                 $("#content_field").val(code);
                 $("#submission_form").submit();
-                window.location.reload();
             }
         }
     };

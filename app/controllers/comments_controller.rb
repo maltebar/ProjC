@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    respond_with(@comment)
+    redirect_to :back
   end
 
   def edit
@@ -25,17 +25,17 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    respond_with(@comment)
+    redirect_to :back
   end
 
   def update
     @comment.update(comment_params)
-    respond_with(@comment)
+    redirect_to :back
   end
 
   def destroy
     @comment.destroy
-    respond_with(@comment)
+    redirect_to :back
   end
 
   private

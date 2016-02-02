@@ -4,7 +4,7 @@
 <br>
 
 <strong>Your Code<strong>
-<%= form_for(@submission, remote: true, html: { id: "submission_form" }) do |f| %>
+<%= form_for(@submission, html: { id: "submission_form" }) do |f| %>
 	<div class="field">
     	<%#= f.label :content, "Code" %><br>
     	<%= f.hidden_field :content, {:id => 'content_field'}%>

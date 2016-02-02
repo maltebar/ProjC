@@ -14,7 +14,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    respond_with(@note)
+    redirect_to :back
   end
 
   def edit
@@ -23,12 +23,12 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.save
-    respond_with(@note)
+    redirect_to :back
   end
 
   def update
     @note.update(note_params)
-    respond_with(@note)
+    redirect_to :back
   end
 
   def destroy

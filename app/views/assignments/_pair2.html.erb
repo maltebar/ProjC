@@ -53,7 +53,7 @@
 		   <tr>
 		      <td>
 			    <% @comments = Comment.where(submission_id: @current_partner_submission.id).order('line_number ASC')%>
-			    <%=form_for(@current_partner_submission, remote: true, html: {id: "comment_form"}) do |f|%>
+			    <%=form_for(@current_partner_submission, html: {id: "comment_form"}) do |f|%>
 			    	<%@comments.each do |comment|%>
 			    		<%=f.fields_for :comments, comment do |c|%>
 			    			<div>

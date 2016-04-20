@@ -128,6 +128,7 @@ class AssignmentsController < ApplicationController
       @pairs.destroy_all
     end
     @assignment.save
+    respond_with(@assignment)
   end
 
   def create

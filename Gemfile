@@ -7,12 +7,10 @@ gem 'devise', '~> 3.4.1'
 
 gem 'ahoy', '~> 0.1.4'
 
-gem 'puma'
+gem 'mysql2', '~> 0.3.18'
 
-gem 'pg'
+
 gem 'private_pub'
-
-# gem 'countdown'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

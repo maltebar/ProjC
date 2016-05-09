@@ -11,6 +11,9 @@ var ready = function () {
                     data: $("#submission_form").serialize(),
                     success:function(message){
                         window.location.reload();
+                    },
+                    error:function(message){
+                        window.location.reload();
                     }
                 });
             }
@@ -26,6 +29,9 @@ var ready = function () {
                     data: $("#submission_form").serialize(),
                     success:function(message){
                         window.location.reload();
+                    },
+                    error:function(message){
+                        window.location.reload();
                     }
                 });
             }
@@ -35,6 +41,9 @@ var ready = function () {
                     url: $("#comment_form").attr("action"),
                     data: $("#comment_form").serialize(),
                     success:function(message){
+                        window.location.reload();
+                    },
+                    error:function(message){
                         window.location.reload();
                     }
                 });
@@ -53,6 +62,9 @@ var ready = function () {
                     data: $("#note_form").serialize(),
                     success:function(message){
                         window.location.reload();
+                    },
+                    error:function(message){
+                        window.location.reload();
                     }
                 });
             }
@@ -62,6 +74,9 @@ var ready = function () {
                     url: $("#submission_form").attr("action"),
                     data: $("#submission_form").serialize(),
                     success:function(message){
+                        window.location.replace('/');
+                    },
+                    error:function(message){
                         window.location.replace('/');
                     }
                 });
@@ -74,6 +89,9 @@ var ready = function () {
                     data: $("#submission_form").serialize(),
                     success:function(message){
                         window.location.reload();
+                    },
+                    error:function(message){
+                        window.location.reload();
                     }
                 });
             }
@@ -83,6 +101,9 @@ var ready = function () {
                     url: $("#note_form").attr("action"),
                     data: $("#note_form").serialize(),
                     success:function(message){
+                        window.location.reload();
+                    },
+                    error:function(message){
                         window.location.reload();
                     }
                 });
@@ -100,6 +121,9 @@ var ready = function () {
                     data: $("#comment_form").serialize(),
                     success:function(message){
                         window.location.reload();
+                    },
+                    error:function(message){
+                        window.location.reload();
                     }
                 });
             }
@@ -114,6 +138,9 @@ var ready = function () {
                     url: $("#submission_form").attr("action"),
                     data: $("#submission_form").serialize(),
                     success:function(message){
+                        window.location.reload();
+                    },
+                    error:function(message){
                         window.location.reload();
                     }
                 });
